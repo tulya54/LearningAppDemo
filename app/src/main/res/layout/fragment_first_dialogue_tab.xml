@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="8dp">
+
+    <LinearLayout
+        android:id="@+id/first_dialogue"
+        android:layout_width="254dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_dialogue_text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/caros_soft_bold"
+            android:paddingVertical="25dp"
+            android:paddingHorizontal="20dp"
+            android:text="You are not true milk! People cannot even make cheese from you."/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/first_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="10dp"
+        android:background="@drawable/background_dialogue_icon"
+        android:src="@drawable/milk_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_dialogue"/>
+
+    <LinearLayout
+        android:id="@+id/second_dialogue"
+        android:layout_width="254dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/background_dialogue_text"
+        app:layout_constraintTop_toBottomOf="@id/first_icon"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/caros_soft_bold"
+            android:paddingVertical="25dp"
+            android:paddingHorizontal="20dp"
+            android:text="Vegans or lactose-intolerant people do not think so! When they want to drink milk - they have an option - plant-based milk."/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/second_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:padding="10dp"
+        android:background="@drawable/background_dialogue_icon"
+        android:src="@drawable/almond_milk_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/second_dialogue"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

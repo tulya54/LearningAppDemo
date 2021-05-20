@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topic_container"
+        android:layout_width="match_parent"
+        android:layout_height="168dp"
+        android:background="@drawable/background_first_topic_item"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:orientation="vertical">
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/topic_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Very Long Topic title"
+            android:padding="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/caros_soft_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/topic_progress_owl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:thumb="@drawable/owl_progress_five"
+            tools:progress="5"
+            android:max="6"
+            android:progressTint="@android:color/transparent"
+            android:progressBackgroundTint="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@id/topic_progress"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/topic_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:thumbTint="@color/black"
+            android:thumb="@color/black"
+            android:progressTint="@color/white"
+            android:progressDrawable="@drawable/topic_progress_bar"
+            tools:progress="3"
+            android:max="6"
+            android:progressBackgroundTint="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

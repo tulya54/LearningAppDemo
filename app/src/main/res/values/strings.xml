@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LearningAppDemo</string>
+    <string name="facebook_app_id">3005112516481466</string>
+    <string name="fb_login_protocol_scheme">fb3005112516481466</string>
+    <string name="sort_images_correctly">Sort images correctly</string>
+    <string name="result">Result:</string>
+    <string name="try_again">Try Again</string>
+    <string name="next">Next</string>
+    <string name="main_page">Main Page</string>
+    <string name="person">Person</string>
+    <string name="object">Object</string>
+    <string name="coming_soon">Coming Soon</string>
+    <string name="tap_only_on_butterfly">Tap only on butterfly</string>
+    <string name="what_is_the_answer_to_the_question">What is the answer to the question?</string>
+    <string name="check">Check</string>
+    <string name="fill_sentence_gaps">Fill sentence gaps.</string>
+    <string name="fill_gaps_with_corresponding_words">Fill gaps with corresponding words.</string>
+    <string name="fill_image_gaps">Fill image gaps.</string>
+    <string name="sort_falling_objects_in_correct_categories">Sort falling objects in correct categories</string>
+    <string name="sort_falling_words_in_correct_categories">Sort falling words in correct categories</string>
+    <string name="objects">Objects</string>
+    <string name="words">Words</string>
+    <string name="pick_all_correct_images">Pick all correct images</string>
+    <string name="true_v">true</string>
+    <string name="put_images_in_correct_order">Put images in correct order.</string>
+    <string name="put_words_in_correct_order">Put words in correct order.</string>
+    <string name="put_correct_comparision_sign">Put correct comparison sign.</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="find_required_words_among_characters">Find required words among characters.</string>
+    <string name="login">Login</string>
+    <string name="false_v">false</string>
+    <string name="is_this_statement_true_or_false">Is this statement true or false?</string>
+    <string name="balance_objects_correctly">Balance objects correctly</string>
+    <string name="tap_the_matching_pairs">Tap the matching pairs</string>
+    <string name="i_already_have_an_account">I already have an account</string>
+    <string name="get_started">Get Started</string>
+    <string name="_38_app">38! App</string>
+    <string name="play_games_and_learn">Play games and learn something new everyday!</string>
+    <string name="your_e_mail">Your e-mail</string>
+    <string name="enter_your_e_mail">Enter your e-mail</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="your_password">Your password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+    <string name="sign_up_with_facebook">Sign up with Facebook</string>
+    <string name="send_reset_password_link">send reset password link</string>
+    <string name="by_signing_to_38_you_agree_to_our_terms_and_privacy_policy">By signing to 38! , you agree to our Terms and Privacy Policy</string>
+    <string name="choose_the_most_comfortable_option_to_sign_up">Choose the most comfortable\noption to sign up</string>
+    <string name="what_is_your_full_name">What is your full name?</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="_04_12_96">04/12/96</string>
+    <string name="your_date_of_birth">Your date of birth</string>
+    <string name="confirm_your_password">Confirm your password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="almost_there">Almost there</string>
+    <string name="choose_your_avatar">Choose your avatar</string>
+    <string name="upload_my_photo">Upload my photo</string>
+    <string name="wrong_credentials">Login or password is incorrect. Please try again!</string>
+    <string name="incorrect_email_format">Incorrect e-mail format</string>
+    <string name="e_mail_was_sent">E-mail was sent</string>
+    <string name="please_check_your_e_mail_inbox">Please check your e-mail inbox</string>
+    <string name="done">Done</string>
+    <string name="passwords_dont_match">Passwords don\'t match</string>
+    <string name="enter_your_details">Enter your details</string>
+    <string name="discover">Discover</string>
+    <string name="topics">Topics</string>
+    <string name="profile">Profile</string>
+    <string name="change_password">Change password</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="terms_of_use">Terms of use</string>
+    <string name="log_out">Log out</string>
+    <string name="error_occurred">Error occurred</string>
+    <string name="no_network">No network</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="full_name">Full Name</string>
+    <string name="save">Save</string>
+    <string name="my_topics">My topics</string>
+    <string name="settings">Settings</string>
+    <string name="topics_for_you">Topics for you</string>
+    <string name="all">All</string>
+    <string name="completed">Completed</string>
+    <string name="Active">Active</string>
+    <string name="start_lesson">Start Lesson</string>
+    <string name="audio">Audio</string>
+    <string name="dialogue">Dialogue</string>
+    <string name="video">Video</string>
+    <string name="article">Article</string>
+
+    <string name="default_article">
+        You might ask why we cannot teach physics by just giving the basic laws on page one and then showing how they work in all possible circumstances, as we do in Euclidean geometry, where we state the axioms and then make all sorts of deductions. (So, not satisfied to learn physics in four years, you want to learn it in four minutes?) We cannot do it in this way for two reasons. First, we do not yet know all the basic laws: there is an expanding frontier of ignorance.\n\n
+          Second, the correct statement of the laws of physics involves some very unfamiliar ideas which require advanced mathematics for their description. Therefore, one needs a considerable amount of preparatory training even to learn what the words mean. No, it is not possible to do it that way. We can only do it piece by piece.\n\n
+        Each piece, or part, of the whole of nature is always merely an approximation to the complete truth, or the complete truth so far as we know it. In fact, everything we know is only some kind of approximation, because we know that we do not know all the laws as yet. Therefore, things must be learned only to be unlearned again or, more likely, to be corrected.\n\n
+        The principle of science, the definition, almost, is the following: The test of all knowledge is experiment. Experiment is the sole judge of scientific “truth.” But what is the source of knowledge? Where do the laws that are to be tested come from? Experiment, itself, helps to produce these laws, in the sense that it gives us hints. But also needed is imagination to create from these hints the great generalizations—to guess at the wonderful, simple, but very strange patterns beneath them all, and then to experiment to check again whether we have made the right guess. This imagining process is so difficult that there is a division of labor in physics: there are theoretical physicists who imagine, deduce, and guess at new laws, but do not experiment; and then there are experimental physicists who experiment, imagine, deduce, and guess.
+    </string>
+    <string name="start_practice_session">Start Practice Session</string>
+    <string name="next_lesson">Next Lesson</string>
+    <string name="please_check_your_e_mail_box">Please check your e-mail box</string>
+</resources>

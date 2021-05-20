@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/page_padding">
+
+    <FrameLayout
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@drawable/circle_choose_avatar">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_main_char" />
+
+    </FrameLayout>
+
+    <com.thirtyeight.thirtyeight.presentation.ui.InputView
+            android:id="@+id/full_name_input_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_inputs"
+            android:hint="@string/full_name"
+            android:inputType="textPersonName"
+            app:label="@string/full_name" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.InputView
+            android:id="@+id/email_input_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_inputs"
+            android:hint="@string/enter_your_e_mail"
+            android:inputType="textEmailAddress"
+            app:label="@string/your_e_mail" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/save_button"
+            style="@style/PrimaryButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="40dp"
+            android:enabled="true"
+            android:text="@string/save" />
+
+</LinearLayout>

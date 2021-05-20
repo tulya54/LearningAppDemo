@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_auth_graph"
+        app:startDestination="@id/nav_splash">
+
+    <fragment
+            android:id="@+id/nav_splash"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.splash.SplashFragment"
+            tools:layout="@layout/fragment_splash">
+        <action
+                android:id="@+id/action_nav_splash_to_nav_welcome"
+                app:destination="@id/nav_welcome"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/nav_auth_graph"
+                app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_welcome"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.auth.welcome.WelcomeFragment"
+            tools:layout="@layout/fragment_welcome">
+        <action
+                android:id="@+id/action_nav_welcome_to_nav_get_started"
+                app:destination="@id/nav_get_started" />
+        <action
+                android:id="@+id/action_nav_welcome_to_nav_login"
+                app:destination="@id/nav_login" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_login"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.auth.login.LoginFragment"
+            android:label="@string/enter_your_details"
+            tools:layout="@layout/fragment_login">
+        <action
+                android:id="@+id/action_nav_login_to_nav_forgot_password"
+                app:destination="@id/nav_forgot_password" />
+        <action
+                android:id="@+id/action_nav_login_to_nav_activity_main"
+                app:destination="@id/nav_activity_main" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_get_started"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.auth.register.getstarted.GetStartedFragment"
+            android:label="@string/get_started"
+            tools:layout="@layout/fragment_get_started">
+        <action
+                android:id="@+id/action_nav_get_started_to_nav_register_step_one"
+                app:destination="@id/nav_register_step_one" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_register_step_one"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.auth.register.stepone.RegisterStepOneFragment"
+            android:label="@string/get_started"
+            tools:layout="@layout/fragment_register_step_one">
+        <action
+                android:id="@+id/action_nav_register_step_one_to_nav_register_step_two"
+                app:destination="@id/nav_register_step_two" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_register_step_two"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.auth.register.steptwo.RegisterStepTwoFragment"
+            android:label="@string/get_started"
+            tools:layout="@layout/fragment_register_step_two">
+        <action
+                android:id="@+id/action_nav_register_step_two_to_nav_register_step_last"
+                app:destination="@id/nav_register_step_last" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_register_step_last"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.auth.register.laststep.RegisterLastStepFragment"
+            android:label="@string/get_started"
+            tools:layout="@layout/fragment_register_last_step">
+        <action
+                android:id="@+id/action_nav_register_step_last_to_nav_activity_main"
+                app:destination="@id/nav_activity_main" />
+    </fragment>
+    <fragment
+            android:id="@+id/nav_forgot_password"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.auth.forgotpassword.ForgotPasswordFragment"
+            android:label="@string/forgot_password"
+            tools:layout="@layout/fragment_forgot_password" />
+    <activity
+            android:id="@+id/nav_activity_main"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.main.MainActivity"
+            android:label="Main"
+            tools:layout="@layout/activity_main" />
+
+</navigation>

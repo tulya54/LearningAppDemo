@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/page_padding">
+
+    <com.thirtyeight.thirtyeight.presentation.ui.InputView
+            android:id="@+id/email_input_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_your_e_mail"
+            android:inputType="textPersonName"
+            app:label="@string/your_e_mail" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.InputView
+            android:id="@+id/password_input_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_inputs"
+            android:hint="@string/enter_your_password"
+            android:inputType="textPassword"
+            app:label="@string/your_password" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.InputView
+            android:id="@+id/confirm_password_input_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_between_inputs"
+            android:hint="@string/confirm_your_password"
+            android:inputType="textPassword"
+            app:label="@string/confirm_password" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/next_button"
+            style="@style/PrimaryButtonStyle"
+            android:layout_width="match_parent"
+            android:text="@string/almost_there" />
+
+</LinearLayout>

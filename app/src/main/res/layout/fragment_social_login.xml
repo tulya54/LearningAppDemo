@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/mech_page_padding"
+        android:paddingBottom="@dimen/mech_page_padding">
+
+    <FrameLayout
+            android:id="@+id/login_with_facebook_container"
+            android:layout_width="212dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:background="@drawable/background_facebook_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="25dp"
+                app:srcCompat="@drawable/ic_facebook_login_logo" />
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/login"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+    </FrameLayout>
+
+
+    <FrameLayout
+            android:id="@+id/login_with_google_container"
+            android:layout_width="212dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/background_google_button"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="25dp"
+                app:srcCompat="@drawable/ic_google_login_logo" />
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/login"
+                android:textColor="@color/mech_color_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebook_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.InputView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Fanchar"
+            app:label="Sqiba" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.InputView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="Fanchar"
+            android:inputType="number"
+            app:label="Sqiba" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/sign_in_button"
+            style="@style/PrimaryButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:text="Sign in" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/forgot_password"
+            style="@style/WhiteButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:text="Forgot Password" />
+
+</LinearLayout>

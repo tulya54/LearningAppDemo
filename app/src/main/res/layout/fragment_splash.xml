@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/page_padding"
+        android:background="?colorPrimary">
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/caros_soft_heavy"
+            android:text="Logo"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/caros_soft_heavy"
+            android:text="38! App"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+
+</FrameLayout>

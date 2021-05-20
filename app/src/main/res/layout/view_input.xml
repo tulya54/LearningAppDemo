@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/label_text_view"
+            style="@style/InputLabelTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Your e-mail" />
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CEditText
+                android:id="@+id/edit_text"
+                style="@style/InputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/input_elements_margin"
+                tools:hint="E-mail" />
+
+
+        <View
+                android:id="@+id/dummy_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_height"
+                android:background="@android:color/transparent"
+                android:visibility="gone" />
+
+    </FrameLayout>
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/error_text_view"
+            style="@style/InputErrorTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/input_radius"
+            android:layout_marginTop="@dimen/input_elements_margin"
+            android:visibility="gone"
+            tools:text="Login or password is incorrect. Please try again!" />
+
+</LinearLayout>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/page_padding">
+
+    <com.thirtyeight.thirtyeight.presentation.ui.views.SettingsItemLayout
+            android:id="@+id/change_password_settings_item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/page_padding"
+            android:src="@drawable/ic_settings_item_change_password"
+            android:text="@string/change_password" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.views.SettingsItemLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/page_padding"
+            android:src="@drawable/ic_settings_item_privacy_policy"
+            android:text="@string/privacy_policy"
+            tools:ignore="RtlSymmetry" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.views.SettingsItemLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/page_padding"
+            android:src="@drawable/ic_settings_item_terms_of_use"
+            android:text="@string/terms_of_use" />
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    <!-- TODO   -->
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/caros_soft_medium"
+            android:text="App version: 2.0"
+            android:textColor="@color/grey_dark"
+            android:textSize="12sp" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/log_out_button"
+            style="@style/WhiteButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/page_padding"
+            android:layout_marginTop="@dimen/margin_between_inputs"
+            android:layout_marginEnd="@dimen/page_padding"
+            android:text="@string/log_out" />
+
+</LinearLayout>

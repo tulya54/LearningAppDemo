@@ -1,0 +1,107 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.thirtyeight.thirtyeight"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 6
+        versionName "0.0.6"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_URL", "\"https://server-v2-e5m6x.ondigitalocean.app\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
+        }
+        debug {
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    applicationVariants.all { variant ->
+        def fileName = getFileName(variant)
+        variant.outputs.each { output ->
+            output.outputFileName = "${fileName}.apk"
+        }
+    }
+    viewBinding {
+        enabled = true
+    }
+}
+
+static def getFileName(variant) {
+    def versionName = (variant.versionName == "") ? "" : "-${variant.versionName}"
+    return "LearningAppDemo_${variant.buildType.name}$versionName"
+}
+
+ext {
+    navigationVersion = "2.3.5"
+    lifecycleVersion = "2.3.1"
+    koinVersion = "2.0.1"
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'dev.andrewbailey.difference:difference:1.0.0'
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    // Koin
+    implementation "org.koin:koin-android:$koinVersion"
+    implementation "org.koin:koin-androidx-viewmodel:$koinVersion"
+    implementation "org.koin:koin-androidx-scope:$koinVersion"
+    implementation "com.yuyakaido.android:card-stack-view:2.3.4"
+
+    implementation 'com.github.nikoloz14:My-Extensions:0.2.2'
+
+    implementation platform('com.google.firebase:firebase-bom:26.7.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    implementation 'com.nex3z:flow-layout:1.3.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'net.igenius:customcheckbox:1.3'
+
+    implementation 'com.facebook.android:facebook-login:5.1.1'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.13.3'
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+}

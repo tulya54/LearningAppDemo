@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+<!--            <solid android:color="@color/black" />-->
+            <gradient
+                android:startColor="#336CCACE"
+                android:endColor="#334F75BD"/>
+            <padding
+                android:bottom="34dp"
+                android:left="34dp"
+                android:right="34dp"
+                android:top="34dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+<!--            <solid android:color="@color/color_primary_dark" />-->
+            <gradient
+                android:startColor="#996CCACE"
+                android:endColor="#994F75BD"/>
+            <padding
+                android:bottom="34dp"
+                android:left="34dp"
+                android:right="34dp"
+                android:top="34dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+<!--            <solid android:color="@color/color_primary" />-->
+            <gradient
+                android:startColor="#E66CCACE"
+                android:endColor="#E64F75BD"/>
+            <padding
+                android:bottom="50dp"
+                android:left="50dp"
+                android:right="50dp"
+                android:top="50dp"/>
+        </shape>
+    </item>
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="oval">
+            <solid android:color="@color/white" />
+            <size
+                android:width="54dp"
+                android:height="54dp"/>
+        </shape>
+    </item>
+</layer-list>

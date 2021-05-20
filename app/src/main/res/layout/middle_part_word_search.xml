@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/words_text_view"
+            style="@style/MechanicTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/mech_page_padding"
+            android:layout_marginEnd="@dimen/mech_page_padding"
+            android:textSize="20sp"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Dog, Cat, " />
+
+    <FrameLayout
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/mech_page_padding"
+            android:background="@drawable/background_word_grid"
+            android:paddingTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.wordsearch.WordSearchLayout
+                android:id="@+id/word_search_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="4sp"
+                android:visibility="visible"
+                app:gridColumnCount="10"
+                app:gridHeight="31dp"
+                app:gridLineVisibility="true"
+                app:gridRowCount="10"
+                app:gridWidth="31dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:letterColor="?colorPrimary"
+                app:letterSize="14sp"
+                app:lineWidth="0dp"
+                app:selectedLetterColor="@color/white"
+                app:snapToGrid="ALWAYS_SNAP"
+                app:streakColor="?colorPrimary"
+                app:streakWidth="24dp" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

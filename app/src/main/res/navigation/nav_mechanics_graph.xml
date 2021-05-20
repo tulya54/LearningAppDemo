@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph_mechanics"
+        app:startDestination="@id/nav_main">
+
+    <fragment
+            android:id="@+id/nav_main"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.MechanicsFragment"
+            android:label="Main"
+            tools:layout="@layout/fragment_mechanics">
+        <action
+                android:id="@+id/action_nav_main_to_nav_mechanic_session"
+                app:destination="@id/nav_mechanic_session" />
+    </fragment>
+
+    <activity
+            android:id="@+id/nav_mechanic_session"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanicsession.MechanicSessionActivity"
+            android:label="Mechanic Session"
+            tools:layout="@layout/activity_mechanic_session">
+        <argument
+                android:name="mechanics"
+                app:argType="com.thirtyeight.thirtyeight.domain.entities.mechanics.Mechanics" />
+    </activity>
+
+
+    <fragment
+            android:id="@+id/nav_tinder"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.tinder.TinderFragment"
+            android:label="Tinder"
+            tools:layout="@layout/fragment_tinder">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.tinder.TinderUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_result"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.result.ResultFragment"
+            android:label="Result"
+            tools:layout="@layout/fragment_result">
+        <argument
+                android:name="points"
+                android:defaultValue="0"
+                app:argType="integer" />
+        <argument
+                android:name="from"
+                android:defaultValue="0"
+                app:argType="integer" />
+        <argument
+                android:name="showNext"
+                android:defaultValue="true"
+                app:argType="boolean" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_roaming_capture"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.capture.roamingcapture.RoamingCaptureFragment"
+            android:label="Roaming"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.capture.roamingcapture.RoamingCaptureUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_appearing_capture"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.capture.appearingcapture.AppearingCaptureFragment"
+            android:label="Appearing Capture"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.capture.appearingcapture.AppearingCaptureUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_trivia"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.trivia.TriviaFragment"
+            android:label="Trivia"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.domain.entities.mechanics.trivia.TriviaQuestionEntity" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_sentence_gap"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.sentence.SentenceGapFragment"
+            android:label="Sentence Gap"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.sentence.SentenceGapUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_image_text_gap"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.imagetext.ImageTextGapFragment"
+            android:label="Image-text Gap"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.imagetext.ImageTextGapUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_image_image_gap"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.imageimage.ImageImageGapFragment"
+            android:label="Image-Image Gap"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.imageimage.ImageImageGapUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_bins_images"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.bins.image.BinsImagesFragment"
+            android:label="Image Bins"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.bins.image.BinsImagesUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_bins_words"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.bins.word.BinsWordsFragment"
+            android:label="Word Bins"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.bins.word.BinsWordsUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_captcha"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.captcha.CaptchaFragment"
+            android:label="Captcha"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.domain.entities.mechanics.captcha.CaptchaQuestionEntity" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_true_or_false"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.trueorfalse.TrueOrFalseFragment"
+            android:label="True or False"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.domain.entities.mechanics.trivia.TriviaQuestionEntity" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_order_images"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.order.image.ImageOrderGapFragment"
+            android:label="Order images"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.order.image.ImageOrderGapUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_order_words"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.order.word.WordOrderGapFragment"
+            android:label="Order words"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.order.word.WordOrderGapUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_arm_wrestling"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.armwrestling.ArmWrestlingFragment"
+            android:label="Arm Wrestling"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.armwrestling.ArmWrestlingUiData" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_columns"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.columns.ColumnsFragment"
+            android:label="Columns"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.domain.entities.mechanics.columns.ColumnsQuestionEntity" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_balance_weights"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.balanceweights.BalanceWeightsFragment"
+            android:label="Balance Weights"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.domain.entities.mechanics.balanceweight.BalanceWeightQuestionEntity" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_word_search"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.mechanics.wordsearch.WordSearchFragment"
+            android:label="Word Search"
+            tools:layout="@layout/fragment_coming_soon">
+        <argument
+                android:name="data"
+                app:argType="com.thirtyeight.thirtyeight.domain.entities.mechanics.wordsearch.WordSearchDataEntity" />
+    </fragment>
+
+</navigation>

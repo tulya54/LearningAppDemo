@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+    <FrameLayout
+            android:id="@+id/progress_bar_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+
+                android:layout_gravity="center" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+            android:id="@+id/person_button"
+            style="@style/MechCustomMaterialButtonStyle.TinderPage"
+            android:layout_marginStart="@dimen/mech_page_padding"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="@dimen/mech_page_padding"
+            android:drawableLeft="@drawable/ic_arrow_left"
+            android:text="@string/person"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+            android:id="@+id/object_button"
+            style="@style/MechCustomMaterialButtonStyle.TinderPage"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="@dimen/mech_page_padding"
+            android:layout_marginBottom="@dimen/mech_page_padding"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:text="@string/object"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <com.yuyakaido.android.cardstackview.CardStackView
+            android:id="@+id/card_stack_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:elevation="1dp"
+            android:translationZ="1dp"
+            app:layout_constraintBottom_toTopOf="@id/object_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

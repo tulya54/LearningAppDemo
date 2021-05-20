@@ -1,0 +1,34 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_profile_graph"
+        app:startDestination="@id/nav_edit_profile">
+
+    <fragment
+            android:id="@+id/nav_edit_profile"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.main.profile.editprofile.EditProfileFragment"
+            android:label="@string/profile"
+            tools:layout="@layout/fragment_edit_profile">
+        <action
+                android:id="@+id/action_nav_edit_profile_to_nav_settings"
+                app:destination="@id/nav_settings" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_settings"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.main.profile.settings.SettingsFragment"
+            android:label="@string/settings"
+            tools:layout="@layout/fragment_settings">
+        <action
+                android:id="@+id/action_nav_settings_to_nav_change_password"
+                app:destination="@id/nav_change_password" />
+    </fragment>
+
+    <fragment
+            android:id="@+id/nav_change_password"
+            android:name="com.thirtyeight.thirtyeight.presentation.screens.main.profile.changepassword.ChangePasswordFragment"
+            android:label="@string/change_password"
+            tools:layout="@layout/fragment_change_password" />
+
+
+</navigation>

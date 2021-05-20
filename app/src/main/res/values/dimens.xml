@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_size">400dp</dimen>
+
+    <!-- Mechanics -->
+    <dimen name="mech_page_padding">15dp</dimen>
+    <dimen name="mech_button_height">45dp</dimen>
+    <dimen name="captcha_item_selected_border_width">2dp</dimen>
+    <dimen name="captcha_item_unselected_border_width">0dp</dimen>
+
+    <!-- App -->
+    <dimen name="page_padding">16dp</dimen>
+    <dimen name="margin_between_inputs">16dp</dimen>
+
+    <!-- Input -->
+    <dimen name="input_height">45dp</dimen>
+    <dimen name="input_radius">22.5dp</dimen>
+    <dimen name="input_stroke_width">1dp</dimen>
+    <dimen name="input_text_size">16sp</dimen>
+    <dimen name="input_hint_size">16sp</dimen>
+    <dimen name="input_label_text_size">16sp</dimen>
+    <dimen name="input_error_text_size">12sp</dimen>
+    <dimen name="input_elements_margin">7.5dp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_text_size">16sp</dimen>
+    <dimen name="button_height">45dp</dimen>
+</resources>

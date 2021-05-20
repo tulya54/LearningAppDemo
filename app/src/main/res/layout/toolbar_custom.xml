@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp">
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="?attr/actionBarSize"
+            android:orientation="horizontal">
+
+        <FrameLayout
+                android:id="@+id/left_icon_container"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="match_parent"
+                android:layout_gravity="start|center_vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/left_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:maxWidth="24dp"
+                    android:maxHeight="24dp" />
+
+        </FrameLayout>
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+                android:id="@+id/title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:fontFamily="@font/caros_soft_bold"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingTop="2.25dp"
+                android:textColor="@color/grey_dark"
+                android:textSize="16sp"
+                tools:text="Home" />
+
+        <FrameLayout
+                android:id="@+id/right_icon_container"
+                android:layout_width="?attr/actionBarSize"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center_vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/right_image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:maxWidth="24dp"
+                    android:maxHeight="24dp" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</androidx.appcompat.widget.Toolbar>

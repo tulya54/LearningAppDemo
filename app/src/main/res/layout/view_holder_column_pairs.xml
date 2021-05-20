@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+    <com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.columns.ColumnItemLayout
+            android:id="@+id/first_column_item_layout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/mech_button_height"
+            android:layout_weight="1" />
+
+    <View
+            android:id="@+id/arrow"
+            android:layout_width="40dp"
+            android:layout_height="2dp"
+            android:background="?colorOnBackground"
+            android:visibility="invisible" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.columns.ColumnItemLayout
+            android:id="@+id/second_column_item_layout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/mech_button_height"
+            android:layout_weight="1" />
+
+</LinearLayout>

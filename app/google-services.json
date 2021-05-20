@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "3648042610",
+    "project_id": "the-app-8ec65",
+    "storage_bucket": "the-app-8ec65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3648042610:android:95fa3a65450d247082f4eb",
+        "android_client_info": {
+          "package_name": "com.thirtyeight.thirtyeight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3648042610-f1pg03cefmqnld9inov9tmf1d4p19gvc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thirtyeight.thirtyeight",
+            "certificate_hash": "fa68e6d84469e82f3b4c2427734f35c916b57a0d"
+          }
+        },
+        {
+          "client_id": "3648042610-vorikri4nhqs7ginmt48rq83j5kscal3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thirtyeight.thirtyeight",
+            "certificate_hash": "db959d05806728d006ac35c19086574bc9b0b124"
+          }
+        },
+        {
+          "client_id": "3648042610-bv88522j1qcjn4e2n5s3oq92bghus1f6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbaff9Wkv3YigokyRWYt4e6NFMKJEwdrI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3648042610-bv88522j1qcjn4e2n5s3oq92bghus1f6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "3648042610-pdurii673sn9mmrtu8c41ot4p3mtj3h2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grangranltd.38TheApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

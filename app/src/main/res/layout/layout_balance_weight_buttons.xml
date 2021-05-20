@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="@dimen/mech_page_padding">
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/minus_button"
+            style="@style/MechPrimaryButtonStyle"
+            android:layout_width="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:text="@string/minus"
+            android:textSize="20sp" />
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/plus_button"
+            style="@style/MechPrimaryButtonStyle"
+            android:layout_width="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:text="@string/plus"
+            android:textSize="20sp" />
+</LinearLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/page_padding">
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/login_with_google_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/ic_main_char" />
+
+            <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+                    style="@style/TextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/caros_soft_bold"
+                    android:gravity="center"
+                    android:text="@string/choose_the_most_comfortable_option_to_sign_up"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+            android:id="@+id/sign_up_with_email_button"
+            style="@style/NoBackgroundButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="30dp"
+            android:text="Sign up with e-mail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+            android:id="@+id/login_with_google_container"
+            style="@style/GoogleLoginButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/margin_between_inputs"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/login_with_facebook_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_google_login_logo" />
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+                style="@style/GoogleLoginTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/sign_up_with_google" />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/login_with_facebook_container"
+            style="@style/FacebookLoginButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/margin_between_inputs"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/sign_up_with_email_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_facebook_login_logo" />
+
+        <com.thirtyeight.thirtyeight.presentation.ui.CTextView
+                style="@style/FacebookLoginTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="@string/sign_up_with_facebook" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

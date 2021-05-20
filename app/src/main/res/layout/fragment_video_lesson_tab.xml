@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/lesson_video_player"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        app:resize_mode="fill"
+        app:use_controller="false"
+        android:layout_marginBottom="165dp"
+        app:show_timeout="500"
+        app:show_buffering="always"
+        app:rewind_increment="10000"
+        app:fastforward_increment="10000"
+        app:surface_type="surface_view"
+        app:controller_layout_id="@layout/lesson_video_player_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/play_button"
+        style="@style/ExoMediaButton.Play"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="165dp"
+        android:src="@drawable/video_player_play"
+        android:background="@drawable/background_video_player_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
