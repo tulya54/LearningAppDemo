@@ -104,4 +104,11 @@ dependencies {
     implementation('com.github.ihsanbal:LoggingInterceptor:3.0.0') {
         exclude group: 'org.json', module: 'json'
     }
+
+
+    //  UI Design
+    //  Dynamic generator DP
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    //  Dynamic generator SP
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
 }

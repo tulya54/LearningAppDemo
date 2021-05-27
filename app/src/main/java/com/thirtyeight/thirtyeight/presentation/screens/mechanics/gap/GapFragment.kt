@@ -36,10 +36,10 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
 
     override fun createBottomContainerView() =
             FrameLayout(requireContext()).apply {
-                val contextWrapper =
-                        ContextThemeWrapper(context, R.style.MechPrimaryButtonStyle)
+                val contextWrapper = ContextThemeWrapper(context, R.style.SentenceGapButtonReady)
+                //  Add button
                 addView(
-                        CTextView(contextWrapper, null, R.style.MechPrimaryButtonStyle).apply {
+                        CTextView(contextWrapper, null, R.style.SentenceGapButtonReady).apply {
                             setText(R.string.check)
                             setOnClickListener {
                                 viewModel.processUiAction(GapUiAction.CheckClicked)

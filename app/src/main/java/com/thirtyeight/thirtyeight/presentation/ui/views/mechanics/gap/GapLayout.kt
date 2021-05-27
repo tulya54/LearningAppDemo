@@ -20,8 +20,8 @@ import com.thirtyeight.thirtyeight.util.drag.DragListener
  * Created by nikolozakhvlediani on 3/27/21.
  */
 abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0):
+    FrameLayout(context, attrs, defStyleAttr) {
 
     var optionChosen: ((optionId: Long, gapIndex: Int) -> Unit)? = null
     var gapClicked: ((gapIndex: Int) -> Unit)? = null

@@ -1,12 +1,14 @@
 package com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.sentence
 
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.sentence.SentenceGapData
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.sentence.SentenceGapOptionData
 import com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.GapFragment
 import com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.gap.SentenceGapLayout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
+import timber.log.Timber
 
 /**
  * Created by nikolozakhvlediani on 3/27/21.
@@ -27,6 +29,7 @@ class SentenceGapFragment :
         fun createInstance(args: SentenceGapFragmentArgs) =
                 SentenceGapFragment().apply {
                     arguments = args.toBundle()
+                    Timber.tag("TAG").d("")
                 }
     }
 }

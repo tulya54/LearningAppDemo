@@ -20,20 +20,14 @@ import com.thirtyeight.thirtyeight.util.drag.DropListener
 /**
  * Created by nikolozakhvlediani on 3/27/21.
  */
-class SentenceGapLayout constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : GapLayout<CTextView, SentenceGapData, SentenceGapOptionData>(context, attrs, defStyleAttr) {
+class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0):
+    GapLayout<CTextView, SentenceGapData, SentenceGapOptionData>(context, attrs, defStyleAttr) {
 
     override val gapDimensions: Dimensions by lazy { Dimensions(100.asPx, 45.asPx) }
-
     private val gapButtonContextWrapper = ContextThemeWrapper(context, R.style.MechGapButtonStyle)
-    private val sentenceTextContextWrapper =
-            ContextThemeWrapper(context, R.style.MechanicTextViewStyle)
+    private val sentenceTextContextWrapper = ContextThemeWrapper(context, R.style.MechanicTextViewStyle)
 
-    override fun addGaps(
-            gapData: SentenceGapData,
-            clickListener: (gapView: CTextView, index: Int) -> Unit
-    ) {
+    override fun addGaps(gapData: SentenceGapData, clickListener: (gapView: CTextView, index: Int) -> Unit) {
         val flowLayout = context.inflateLayout(R.layout.part_sentence_gaps) as FlowLayout
         var counter = 0
         gapData.data.forEach {

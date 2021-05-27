@@ -27,4 +27,6 @@
     <color name="color_light">#F6FFFF</color>
     <color name="green">#5CC293</color>
 
+    <color name="gray_modal_description">#747474</color>
+    <color name="purple_btn">#B43E85</color>
 </resources>
