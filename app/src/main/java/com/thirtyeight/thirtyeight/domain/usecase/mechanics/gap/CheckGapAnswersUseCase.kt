@@ -10,13 +10,18 @@ class CheckGapAnswersUseCase :
         BaseUseCase<CheckGapAnswersUseCase.GapAnswers, CheckGapAnswersUseCase.GapResult>() {
 
     override fun execute(input: GapAnswers): GapResult {
+        val resultList = ArrayList<Boolean>()
         val from = input.gaps.size
         var point = 0
         input.gapQuestionEntity.answers.forEachIndexed { index, answerId ->
-            if (answerId == input.gaps[index])
+            if (answerId == input.gaps[index]) {
                 point++
+                resultList.add(true)
+            } else {
+                resultList.add(false)
+            }
         }
-        return GapResult(point, from)
+        return GapResult(point, from, resultList)
     }
 
     data class GapAnswers(
@@ -26,6 +31,7 @@ class CheckGapAnswersUseCase :
 
     data class GapResult(
             val point: Int,
-            val from: Int
+            val from: Int,
+            val resultList: List<Boolean>
     )
 }

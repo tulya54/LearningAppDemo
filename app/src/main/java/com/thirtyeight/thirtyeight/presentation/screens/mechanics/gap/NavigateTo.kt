@@ -5,5 +5,5 @@ package com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap
  */
 sealed class NavigateTo {
 
-    data class Result(val points: Int, val from: Int) : NavigateTo()
+    data class Result(val points: Int, val from: Int, val resultList: List<Boolean>? = null): NavigateTo()
 }

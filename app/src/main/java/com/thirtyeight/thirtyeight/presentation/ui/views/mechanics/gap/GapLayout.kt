@@ -14,8 +14,12 @@ import com.nikoloz14.myextensions.makeVisible
 import com.thirtyeight.thirtyeight.R
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.GapOptionEntity
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.GapQuestionEntity
+import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.sentence.SentenceGapOptionData
 import com.thirtyeight.thirtyeight.presentation.ext.inflateLayout
+import com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.sentence.SentenceGapFragment
+import com.thirtyeight.thirtyeight.presentation.ui.CTextView
 import com.thirtyeight.thirtyeight.util.drag.DragListener
+import timber.log.Timber
 
 /**
  * Created by nikolozakhvlediani on 3/27/21.
@@ -26,6 +30,8 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
 
     var optionChosen: ((optionId: Long, gapIndex: Int) -> Unit)? = null
     var gapClicked: ((gapIndex: Int) -> Unit)? = null
+
+
 
     // TODO note protected
     protected val gapContainer: FrameLayout
@@ -77,11 +83,6 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     private fun addOptions(gapQuestionEntity: GapQuestionEntity<GapData, OptionData>) {
         gapQuestionEntity.options.forEach { option ->
             val optionView = createGapView()
-            //  optionView2  items default for FlowLayout2
-            val optionView2 = createGapView()
-            optionView2.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_placeholder_text)
-            setDataToGap(optionView2, option.data)
-
             optionData[optionView] = option
             setDataToGap(optionView, option.data)
             viewPool[option.id] = optionView
@@ -110,11 +111,16 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
                     optionView,
                     LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height)
             )
-            //  FlowLayout2 for placeholder
-            flowLayout2.addView(
-                optionView2,
-                LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height)
-            )
+            //  optionView2  items default for FlowLayout2
+            if (option.data is SentenceGapOptionData) {
+                val optionView2 = createGapView()
+                defaultPlaceholder(optionView2 as CTextView, option.data as SentenceGapOptionData)
+                flowLayout2.addView(
+                    optionView2,
+                    LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height)
+                )
+            }
+
         }
     }
 
@@ -131,4 +137,38 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     }
 
     data class Dimensions(val width: Int, val height: Int)
+
+    //  FlowLayout2 for placeholder
+    private fun defaultPlaceholder(gap: CTextView, dataGap: SentenceGapOptionData) {
+        gap.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_placeholder_text)
+        gap.text = dataGap.text
+        gap.setTextColor(ContextCompat.getColor(context, R.color.gray_modal_description))
+    }
+
+    fun goodResult() {
+        for (i in gaps) {
+            i.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_good_text)
+        }
+    }
+
+    fun wrongResult(points: Int, from: Int, resultList: List<Boolean>) {
+        val listIsEmpty = ArrayList<Boolean>()
+        for (gap in gaps) {
+            val obj = gap as CTextView
+            val text = obj.text.toString()
+            if (text == "") {
+                listIsEmpty.add(true)
+            } else {
+                listIsEmpty.add(false)
+            }
+            Timber.tag("TAG").d(text)
+        }
+        for (i in 0 until listIsEmpty.size) {
+            if (listIsEmpty[i] == resultList[i]) {
+                gaps[i].background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_wrong_text)
+            } else if (resultList[i]) {
+                gaps[i].background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_good_text)
+            }
+        }
+    }
 }

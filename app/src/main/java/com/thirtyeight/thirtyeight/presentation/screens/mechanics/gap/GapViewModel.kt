@@ -18,7 +18,7 @@ abstract class GapViewModel<GapData, OptionData>(
         private val checkGapAnswersUseCase: CheckGapAnswersUseCase,
         coroutineContextProvider: CoroutineContextProvider,
         stringResourceMapper: StringResourceMapper
-) : ViewStateViewModel<GapViewState<GapData, OptionData>, GapUiAction, GapWish<GapData, OptionData>>(coroutineContextProvider, stringResourceMapper) {
+): ViewStateViewModel<GapViewState<GapData, OptionData>, GapUiAction, GapWish<GapData, OptionData>>(coroutineContextProvider, stringResourceMapper) {
 
     abstract fun getGapCount(gapData: GapData): Int
 
@@ -84,7 +84,7 @@ abstract class GapViewModel<GapData, OptionData>(
                             viewState.gaps
                     )
             )
-            _navigationLiveData.postValue(NavigateTo.Result(result.point, result.from))
+            _navigationLiveData.postValue(NavigateTo.Result(result.point, result.from, result.resultList))
         }
     }
 }

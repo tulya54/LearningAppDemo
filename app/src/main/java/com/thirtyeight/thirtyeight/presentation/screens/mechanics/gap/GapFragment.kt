@@ -5,12 +5,15 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.nikoloz14.myextensions.asPx
 import com.thirtyeight.thirtyeight.R
+import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.sentence.SentenceGapData
+import com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.sentence.SentenceGapFragment
 import com.thirtyeight.thirtyeight.presentation.screens.mechanicsession.MechanicSessionUiAction
 import com.thirtyeight.thirtyeight.presentation.screens.mechanicsession.MechanicSessionViewModel
 import com.thirtyeight.thirtyeight.presentation.ui.CTextView
 import com.thirtyeight.thirtyeight.presentation.ui.base.BaseMechanicFragment
 import com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.gap.GapLayout
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 /**
  * Created by nikolozakhvlediani on 3/27/21.
@@ -23,6 +26,8 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
     private lateinit var gapLayout: GL
 
     abstract fun createGapLayout(): GL
+
+    val thisCLass = this
 
     override fun createMiddleContainerView() = createGapLayout().also {
         gapLayout = it
@@ -63,14 +68,31 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
         viewModel.navigationLiveData.observe(viewLifecycleOwner) {
             when (it) {
                 is NavigateTo.Result -> {
-                    sharedViewModel.processUiAction(
+                    if (thisCLass is SentenceGapFragment) {
+                        Timber.tag("TAG").d("GOOD")
+                        onSentenceGapsButton(it)
+                    } else {
+                        sharedViewModel.processUiAction(
                             MechanicSessionUiAction.NavigateToResult(
-                                    it.points,
-                                    it.from
+                                it.points,
+                                it.from
                             )
-                    )
+                        )
+                    }
                 }
             }
+        }
+    }
+
+    //  My change
+    open fun onSentenceGapsButton(result: NavigateTo.Result) {
+        val points = result.points
+        val from = result.from
+        val resultList = result.resultList
+        if (points == from) {
+            gapLayout.goodResult()
+        } else {
+            gapLayout.wrongResult(points, from, resultList!!)
         }
     }
 }

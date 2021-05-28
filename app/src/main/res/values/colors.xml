@@ -30,4 +30,8 @@
     <color name="gray_modal_description">#747474</color>
     <color name="purple_btn">#B43E85</color>
     <color name="pink">#FFF2FA</color>
+    <color name="green_light">#DBFFDF</color>
+    <color name="green_dark">#1A8917</color>
+    <color name="red_light">#FFF6F6</color>
+    <color name="red_dark">#E4100E</color>
 </resources>

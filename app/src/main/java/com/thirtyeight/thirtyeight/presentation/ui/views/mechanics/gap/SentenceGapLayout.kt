@@ -92,6 +92,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
         gap.text = dataGap.text
     }
 
+    //  My change
     override fun changeUIGapSelected(gap: CTextView) {
         gap.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_selected_text)
     }
