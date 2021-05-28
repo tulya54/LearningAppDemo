@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.nex3z.flowlayout.FlowLayout
 import com.nikoloz14.myextensions.isVisible
 import com.nikoloz14.myextensions.makeInvisible
@@ -29,6 +30,7 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     // TODO note protected
     protected val gapContainer: FrameLayout
     private val flowLayout: FlowLayout
+    private val flowLayout2: FlowLayout
 
     private var gapQuestionEntity: GapQuestionEntity<GapData, OptionData>? = null
 
@@ -47,10 +49,17 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     abstract fun setDataToGap(gap: GapView, data: OptionData)
     abstract val gapDimensions: Dimensions
 
+    //  My change for UI
+    open fun changeUIGapSelected(view: GapView) {
+
+    }
+
     init {
         val view = context.inflateLayout(R.layout.layout_gap, this, true)
         flowLayout = view.findViewById(R.id.flow_layout)
         gapContainer = view.findViewById(R.id.gap_container)
+        //  FlowLayout2 for placeholder
+        flowLayout2 = view.findViewById(R.id.flow_layout2)
     }
 
     fun setQuestion(gapQuestionEntity: GapQuestionEntity<GapData, OptionData>) {
@@ -68,6 +77,11 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     private fun addOptions(gapQuestionEntity: GapQuestionEntity<GapData, OptionData>) {
         gapQuestionEntity.options.forEach { option ->
             val optionView = createGapView()
+            //  optionView2  items default for FlowLayout2
+            val optionView2 = createGapView()
+            optionView2.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_placeholder_text)
+            setDataToGap(optionView2, option.data)
+
             optionData[optionView] = option
             setDataToGap(optionView, option.data)
             viewPool[option.id] = optionView
@@ -96,12 +110,19 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
                     optionView,
                     LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height)
             )
+            //  FlowLayout2 for placeholder
+            flowLayout2.addView(
+                optionView2,
+                LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height)
+            )
         }
     }
 
     protected fun chooseOptionForGap(gapIndex: Int, option: GapOptionEntity<OptionData>, gapView: GapView) {
         optionChosen?.invoke(option.id, gapIndex)
         val gap = gaps[gapIndex]
+        //  My change TextView GAP
+        changeUIGapSelected(gap)
         setDataToGap(gap, option.data)
         availableGaps[gapIndex] = false
         gapPool[gap] = option.id

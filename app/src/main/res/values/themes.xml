@@ -289,6 +289,16 @@
         <item name="android:background">@drawable/background_btn_ready</item>
         <item name="android:textColor">?colorOnPrimary</item>
     </style>
-<!--    <style name="SentenceGapSelectText" parent=""-->
+    <style name="SentenceGapSelectText">
+        <item name="android:background">@drawable/background_sentence_gap_select_text</item>
+
+        <item name="android:layout_height">@dimen/mech_button_height</item>
+
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/purple_btn</item>
+    </style>
 
 </resources>

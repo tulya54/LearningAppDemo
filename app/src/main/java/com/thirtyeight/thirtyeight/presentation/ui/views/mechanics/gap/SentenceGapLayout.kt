@@ -7,6 +7,7 @@ import android.view.Gravity
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.nex3z.flowlayout.FlowLayout
 import com.nikoloz14.myextensions.asPx
 import com.thirtyeight.thirtyeight.R
@@ -24,7 +25,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
     GapLayout<CTextView, SentenceGapData, SentenceGapOptionData>(context, attrs, defStyleAttr) {
 
     override val gapDimensions: Dimensions by lazy { Dimensions(100.asPx, 45.asPx) }
-    private val gapButtonContextWrapper = ContextThemeWrapper(context, R.style.MechGapButtonStyle)
+    private val gapButtonContextWrapper = ContextThemeWrapper(context, R.style.SentenceGapSelectText)
     private val sentenceTextContextWrapper = ContextThemeWrapper(context, R.style.MechanicTextViewStyle)
 
     override fun addGaps(gapData: SentenceGapData, clickListener: (gapView: CTextView, index: Int) -> Unit) {
@@ -75,6 +76,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
 
     override fun clearGap(gap: CTextView) {
         gap.text = ""
+        gap.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_unselected_text)
         gap.setOnDragListener(
                 DropListener {
                     chooseOptionForGap(
@@ -88,5 +90,9 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
 
     override fun setDataToGap(gap: CTextView, dataGap: SentenceGapOptionData) {
         gap.text = dataGap.text
+    }
+
+    override fun changeUIGapSelected(gap: CTextView) {
+        gap.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_selected_text)
     }
 }

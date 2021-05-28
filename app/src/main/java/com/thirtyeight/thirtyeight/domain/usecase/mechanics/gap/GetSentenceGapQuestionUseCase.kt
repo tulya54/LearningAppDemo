@@ -20,7 +20,7 @@ class GetSentenceGapQuestionUseCase :
         val to = GenerateId()
         val question = GenerateId()
         return GapQuestionEntity(
-                R.string.fill_sentence_gaps,
+                R.string.fill_the_gaps,
                 SentenceGapData(
                         listOf(
                                 SentenceGapItem.Word("To"),
