@@ -53,12 +53,10 @@ abstract class GapViewModel<GapData, OptionData>(
         }.exhaustive
     }
 
-    private inner class GapReducer :
-            Reducer<GapViewState<GapData, OptionData>, GapWish<GapData, OptionData>> {
-        override fun invoke(
-                viewState: GapViewState<GapData, OptionData>,
-                wish: GapWish<GapData, OptionData>
-        ): GapViewState<GapData, OptionData> {
+    private inner class GapReducer: Reducer<GapViewState<GapData, OptionData>, GapWish<GapData, OptionData>> {
+
+        override fun invoke(viewState: GapViewState<GapData, OptionData>, wish: GapWish<GapData, OptionData>):
+                GapViewState<GapData, OptionData> {
             return when (wish) {
                 is GapWish.DataLoaded -> viewState.copy(
                         question = wish.question,

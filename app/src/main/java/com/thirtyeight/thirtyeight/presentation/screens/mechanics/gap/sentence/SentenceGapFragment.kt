@@ -13,8 +13,8 @@ import timber.log.Timber
 /**
  * Created by nikolozakhvlediani on 3/27/21.
  */
-class SentenceGapFragment :
-        GapFragment<SentenceGapData, SentenceGapOptionData, SentenceGapViewModel, SentenceGapLayout>() {
+class SentenceGapFragment:
+    GapFragment<SentenceGapData, SentenceGapOptionData, SentenceGapViewModel, SentenceGapLayout>() {
 
     private val args: SentenceGapFragmentArgs by navArgs()
 

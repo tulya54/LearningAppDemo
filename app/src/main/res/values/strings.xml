@@ -102,4 +102,6 @@
     <string name="start_practice_session">Start Practice Session</string>
     <string name="next_lesson">Next Lesson</string>
     <string name="please_check_your_e_mail_box">Please check your e-mail box</string>
+
+    <string name="ready">Ready</string>
 </resources>

@@ -43,13 +43,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
                     counter++
                     gaps.add(gap)
                     availableGaps.add(true)
-                    flowLayout.addView(
-                            gap,
-                            LinearLayout.LayoutParams(
-                                    gapDimensions.width,
-                                    gapDimensions.height
-                            )
-                    )
+                    flowLayout.addView(gap, LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height))
                 }
                 is SentenceGapItem.Word -> {
                     val wordView = CTextView(

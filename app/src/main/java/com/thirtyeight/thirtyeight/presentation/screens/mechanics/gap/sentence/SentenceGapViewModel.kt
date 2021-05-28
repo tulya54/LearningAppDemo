@@ -19,8 +19,7 @@ class SentenceGapViewModel(
         private val getSentenceGapQuestionUseCase: GetSentenceGapQuestionUseCase,
         coroutineContextProvider: CoroutineContextProvider,
         stringResourceMapper: StringResourceMapper
-) : GapViewModel<SentenceGapData, SentenceGapOptionData>(gapQuestionEntity, checkGapAnswersUseCase, coroutineContextProvider, stringResourceMapper) {
+): GapViewModel<SentenceGapData, SentenceGapOptionData>(gapQuestionEntity, checkGapAnswersUseCase, coroutineContextProvider, stringResourceMapper) {
 
-    override fun getGapCount(gapData: SentenceGapData): Int =
-            gapData.data.count { it is SentenceGapItem.Gap }
+    override fun getGapCount(gapData: SentenceGapData): Int = gapData.data.count { it is SentenceGapItem.Gap }
 }

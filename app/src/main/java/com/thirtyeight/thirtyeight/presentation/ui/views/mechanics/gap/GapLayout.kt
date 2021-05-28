@@ -99,11 +99,7 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
         }
     }
 
-    protected fun chooseOptionForGap(
-            gapIndex: Int,
-            option: GapOptionEntity<OptionData>,
-            gapView: GapView
-    ) {
+    protected fun chooseOptionForGap(gapIndex: Int, option: GapOptionEntity<OptionData>, gapView: GapView) {
         optionChosen?.invoke(option.id, gapIndex)
         val gap = gaps[gapIndex]
         setDataToGap(gap, option.data)
@@ -113,8 +109,5 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
         viewPool[option.id]?.makeInvisible()
     }
 
-    data class Dimensions(
-            val width: Int,
-            val height: Int
-    )
+    data class Dimensions(val width: Int, val height: Int)
 }

@@ -8,6 +8,5 @@ import java.io.Serializable
 /**
  * Created by nikolozakhvlediani on 4/10/21.
  */
-data class SentenceGapUiData(
-        val question: GapQuestionEntity<SentenceGapData, SentenceGapOptionData>
-) : Serializable
+data class SentenceGapUiData(val question: GapQuestionEntity<SentenceGapData, SentenceGapOptionData>):
+        Serializable

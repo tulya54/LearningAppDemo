@@ -40,7 +40,7 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
                 //  Add button
                 addView(
                         CTextView(contextWrapper, null, R.style.SentenceGapButtonReady).apply {
-                            setText(R.string.check)
+                            setText(R.string.ready)
                             setOnClickListener {
                                 viewModel.processUiAction(GapUiAction.CheckClicked)
                             }
