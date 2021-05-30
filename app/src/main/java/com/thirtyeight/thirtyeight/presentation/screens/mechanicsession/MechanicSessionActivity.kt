@@ -1,5 +1,6 @@
 package com.thirtyeight.thirtyeight.presentation.screens.mechanicsession
 
+import android.text.Spannable
 import android.view.LayoutInflater
 import androidx.navigation.navArgs
 import com.thirtyeight.thirtyeight.R
@@ -225,5 +226,11 @@ class MechanicSessionActivity :
             }
         }
         replaceFragment(R.id.fragment_container, fragment)
+    }
+
+
+
+    fun onChangeTitleToolbar(spannable: Spannable) {
+        binding.mechanicsToolbarLayout.setToolbarTitle(spannable)
     }
 }

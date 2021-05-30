@@ -1,6 +1,7 @@
 package com.thirtyeight.thirtyeight.presentation.ui.views.mechanics
 
 import android.content.Context
+import android.text.Spannable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
@@ -65,4 +66,8 @@ class MechanicsToolbarLayout @JvmOverloads constructor(
             val title: String,
             val progress: Float
     )
+
+    fun setToolbarTitle(spannable: Spannable) {
+        titleTextView.setText(spannable)
+    }
 }

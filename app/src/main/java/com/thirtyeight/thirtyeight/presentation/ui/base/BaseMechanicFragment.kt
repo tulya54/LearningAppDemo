@@ -24,11 +24,8 @@ abstract class BaseMechanicFragment<VM : ViewStateViewModel<*, *, *>> :
 
     override fun createBinding(view: View) = FragmentBaseMechanicBinding.bind(view)
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?):
+            View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.topContainer.addOrHide(createTopContainerView())
         binding.middleContainer.addOrHide(createMiddleContainerView())

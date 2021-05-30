@@ -10,9 +10,9 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 5,
-      "versionName": "0.0.5",
-      "outputFile": "LearningAppDemo_release-0.0.5.apk"
+      "versionCode": 6,
+      "versionName": "0.0.6",
+      "outputFile": "LearningAppDemo_release-0.0.6.apk"
     }
   ]
 }

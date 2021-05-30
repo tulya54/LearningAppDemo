@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -107,17 +108,21 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
                 true
             }
             setOnDragListener(DragListener())
+            val leftOrRight = context.resources.getDimension(R.dimen._20sdp).toInt()
+            optionView.setPadding(leftOrRight, 0, leftOrRight, 0)
             flowLayout.addView(
                     optionView,
-                    LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height)
+                    LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, gapDimensions.height)
             )
             //  optionView2  items default for FlowLayout2
             if (option.data is SentenceGapOptionData) {
                 val optionView2 = createGapView()
                 defaultPlaceholder(optionView2 as CTextView, option.data as SentenceGapOptionData)
+             //   val leftOrRight = context.resources.getDimension(R.dimen._20sdp).toInt()
+                optionView2.setPadding(leftOrRight, 0, leftOrRight, 0)
                 flowLayout2.addView(
                     optionView2,
-                    LinearLayout.LayoutParams(gapDimensions.width, gapDimensions.height)
+                    LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, gapDimensions.height)
                 )
             }
 
@@ -148,6 +153,10 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     fun goodResult() {
         for (i in gaps) {
             i.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_good_text)
+            if (i is CTextView) {
+                val gap = i as CTextView
+                gap.setTextColor(ContextCompat.getColor(context, R.color.green_dark))
+            }
         }
     }
 
@@ -166,6 +175,10 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
         for (i in 0 until listIsEmpty.size) {
             if (listIsEmpty[i] == resultList[i]) {
                 gaps[i].background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_wrong_text)
+                if (gaps[i] is CTextView) {
+                    val gap = gaps[i] as CTextView
+                    gap.setTextColor(ContextCompat.getColor(context, R.color.red_dark))
+                }
             } else if (resultList[i]) {
                 gaps[i].background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_good_text)
             }

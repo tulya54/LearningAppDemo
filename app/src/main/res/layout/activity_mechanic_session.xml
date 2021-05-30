@@ -8,7 +8,7 @@
             android:id="@+id/mechanics_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/mech_page_padding" />
+            />
 
     <FrameLayout
             android:id="@+id/fragment_container"

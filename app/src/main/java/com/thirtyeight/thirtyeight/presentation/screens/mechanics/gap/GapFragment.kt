@@ -1,12 +1,19 @@
 package com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.ContextThemeWrapper
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.nikoloz14.myextensions.asPx
 import com.thirtyeight.thirtyeight.R
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.sentence.SentenceGapData
 import com.thirtyeight.thirtyeight.presentation.screens.mechanics.gap.sentence.SentenceGapFragment
+import com.thirtyeight.thirtyeight.presentation.screens.mechanicsession.MechanicSessionActivity
 import com.thirtyeight.thirtyeight.presentation.screens.mechanicsession.MechanicSessionUiAction
 import com.thirtyeight.thirtyeight.presentation.screens.mechanicsession.MechanicSessionViewModel
 import com.thirtyeight.thirtyeight.presentation.ui.CTextView
@@ -28,6 +35,7 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
     abstract fun createGapLayout(): GL
 
     val thisCLass = this
+    var btnGo: CTextView? = null
 
     override fun createMiddleContainerView() = createGapLayout().also {
         gapLayout = it
@@ -43,15 +51,17 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
             FrameLayout(requireContext()).apply {
                 val contextWrapper = ContextThemeWrapper(context, R.style.SentenceGapButtonReady)
                 //  Add button
-                addView(
-                        CTextView(contextWrapper, null, R.style.SentenceGapButtonReady).apply {
-                            setText(R.string.ready)
-                            setOnClickListener {
-                                viewModel.processUiAction(GapUiAction.CheckClicked)
-                            }
-                        },
-                        FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 45.asPx)
-                )
+                btnGo = CTextView(contextWrapper, null, R.style.SentenceGapButtonReady).apply {
+                    setText(R.string.ready)
+                    setOnClickListener {
+                        viewModel.processUiAction(GapUiAction.CheckClicked)
+                    }
+                }
+                val params = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    resources.getDimension(R.dimen._40sdp).toInt())
+                params.setMargins(0,0,0,resources.getDimension(R.dimen._20sdp).toInt())
+                addView(btnGo, params)
+               // val leftOrRight = resources.getDimension(R.dimen._20sdp).toInt()
                 val padding = resources.getDimension(R.dimen.mech_page_padding).toInt()
                 setPadding(padding, padding, padding, padding)
             }
@@ -70,7 +80,12 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
                 is NavigateTo.Result -> {
                     if (thisCLass is SentenceGapFragment) {
                         Timber.tag("TAG").d("GOOD")
-                        onSentenceGapsButton(it)
+                        if (!isSentenceGap) {
+                            isSentenceGap = !isSentenceGap
+                            onSentenceGapsButton(it)
+                        } else {
+                            Toast.makeText(context, "Beta test", Toast.LENGTH_SHORT).show()
+                        }
                     } else {
                         sharedViewModel.processUiAction(
                             MechanicSessionUiAction.NavigateToResult(
@@ -84,6 +99,8 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
         }
     }
 
+    private var isSentenceGap = false
+
     //  My change
     open fun onSentenceGapsButton(result: NavigateTo.Result) {
         val points = result.points
@@ -91,8 +108,41 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
         val resultList = result.resultList
         if (points == from) {
             gapLayout.goodResult()
+            val mechanicSessionActivity = activity as MechanicSessionActivity?
+            mechanicSessionActivity?.let { activity ->
+                //   "СORRECT 3/3"
+                val firstText = "СORRECT $points"
+                val secondText = "/$from"
+                val startIndex = 0
+                val endIndex = firstText.length
+                val spannableString = SpannableString(firstText + secondText)
+                spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(activity, R.color.green_dark)),
+                    startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                activity.onChangeTitleToolbar(spannableString)
+                btnGo?.let {
+                    it.background = ContextCompat.getDrawable(activity, R.drawable.background_btn_green_dark)
+                    it.text = "CONTINUE"
+                }
+            }
         } else {
             gapLayout.wrongResult(points, from, resultList!!)
+            val mechanicSessionActivity = activity as MechanicSessionActivity?
+            mechanicSessionActivity?.let { activity ->
+                //  WRONG 2/3
+                val firstText = "СORRECT $points"
+                val secondText = "/$from"
+                val startIndex = 0
+                val endIndex = firstText.length
+                val spannableString = SpannableString(firstText + secondText)
+                spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(activity, R.color.red_dark)),
+                    startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                activity.onChangeTitleToolbar(spannableString)
+                btnGo?.let {
+                    it.background = ContextCompat.getDrawable(activity, R.drawable.background_btn_red_dark)
+                    it.text = "CONTINUE"
+                }
+            }
         }
+
     }
 }

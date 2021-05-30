@@ -27,7 +27,7 @@
         android:text="Name"
         android:textSize="@dimen/_14ssp"
         android:textColor="@color/black"
-        android:fontFamily="@font/caros_soft_medium"
+        android:fontFamily="@font/nunito_extrabold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -58,6 +58,7 @@
         android:text="READY"
         android:textSize="@dimen/_14ssp"
         android:textColor="@color/white"
+        android:fontFamily="@font/nunito_extrabold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
