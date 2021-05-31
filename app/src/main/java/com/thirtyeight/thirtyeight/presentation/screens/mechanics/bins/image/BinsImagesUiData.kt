@@ -6,6 +6,4 @@ import java.io.Serializable
 /**
  * Created by nikolozakhvlediani on 4/9/21.
  */
-data class BinsImagesUiData(
-        val data: BinsDataEntity<Int>
-) : Serializable
+data class BinsImagesUiData(val data: BinsDataEntity<Int>): Serializable

@@ -20,6 +20,7 @@ class CardsAdapter(
             CardViewHolder(parent.context.inflateLayout(R.layout.view_holder_card, parent))
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+        //  Your code
         holder.setContent(images[position])
     }
 

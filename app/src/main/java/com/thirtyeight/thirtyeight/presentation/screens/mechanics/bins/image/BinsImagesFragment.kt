@@ -10,7 +10,7 @@ import org.koin.core.parameter.parametersOf
 /**
  * Created by nikolozakhvlediani on 3/29/21.
  */
-class BinsImagesFragment : BinsFragment<Int>() {
+class BinsImagesFragment: BinsFragment<Int>() {
 
     private val args: BinsImagesFragmentArgs by navArgs()
 
