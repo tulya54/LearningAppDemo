@@ -36,10 +36,10 @@ class SentenceGapFragment:
                 }
     }
 
-//    override fun initViews(view: View) {
-//        super.initViews(view)
-//        onModalWindow()
-//    }
+    override fun initViews(view: View) {
+        super.initViews(view)
+        onModalWindow()
+    }
 
     fun onModalWindow() {
         val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialog)

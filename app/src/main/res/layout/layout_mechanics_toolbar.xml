@@ -55,7 +55,8 @@
             android:textSize="@dimen/_14ssp"
             android:textColor="?attr/colorOnBackground"
             android:gravity="center"
-            android:fontFamily="@font/nunito_extrabold"
+            android:fontFamily="@font/nunito_regular"
+            android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>
 

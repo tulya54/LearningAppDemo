@@ -59,7 +59,7 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
                 }
                 val params = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     resources.getDimension(R.dimen._40sdp).toInt())
-                params.setMargins(0,0,0,resources.getDimension(R.dimen._20sdp).toInt())
+                params.setMargins(0,0,0,resources.getDimension(R.dimen._15sdp).toInt())
                 addView(btnGo, params)
                // val leftOrRight = resources.getDimension(R.dimen._20sdp).toInt()
                 val padding = resources.getDimension(R.dimen.mech_page_padding).toInt()

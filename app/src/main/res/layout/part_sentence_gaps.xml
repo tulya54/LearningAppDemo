@@ -9,19 +9,20 @@
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:flow_horizontalAlign="start"
         app:flow_horizontalBias="0"
         app:flow_horizontalGap="@dimen/_8sdp"
         app:flow_maxElementsWrap="4"
         app:flow_verticalBias="0"
         app:flow_verticalGap="@dimen/_8sdp"
-        app:flow_wrapMode="aligned"
+        app:flow_wrapMode="chain"
         app:flow_horizontalStyle="packed"
         android:id="@+id/root"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_10sdp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
 

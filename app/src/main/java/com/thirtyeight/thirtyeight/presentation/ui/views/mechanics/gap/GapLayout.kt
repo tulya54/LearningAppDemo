@@ -32,8 +32,6 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     var optionChosen: ((optionId: Long, gapIndex: Int) -> Unit)? = null
     var gapClicked: ((gapIndex: Int) -> Unit)? = null
 
-
-
     // TODO note protected
     protected val gapContainer: FrameLayout
     private val flowLayout: FlowLayout
