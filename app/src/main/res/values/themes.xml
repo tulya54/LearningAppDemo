@@ -129,7 +129,7 @@
         <item name="android:layout_height">@dimen/mech_button_height</item>
         <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/background_mech_button_primary</item>
+        <item name="android:background">@drawable/background_btn_ready</item>
     </style>
 
     <style name="MechBinFallingItemTextStyle" parent="MechTextViewStyle">
@@ -299,6 +299,16 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/purple_btn</item>
+    </style>
+
+
+
+    <style name="CustomProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="minHeight">@dimen/_35sdp</item>  <!-- default 16dp -->
+        <item name="maxHeight">@dimen/_35sdp</item>  <!-- default 16dp -->
+    </style>
+    <style name="CustomProgressBarTheme">
+        <item name="colorControlActivated">@color/purple_btn</item>
     </style>
 
 </resources>

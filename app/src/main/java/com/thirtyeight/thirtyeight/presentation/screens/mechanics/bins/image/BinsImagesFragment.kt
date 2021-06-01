@@ -14,8 +14,7 @@ class BinsImagesFragment: BinsFragment<Int>() {
 
     private val args: BinsImagesFragmentArgs by navArgs()
 
-    override fun createBinLayout(): BinsLayout<*, Int> =
-            BinsImagesLayout(requireContext())
+    override fun createBinLayout(): BinsLayout<*, Int> = BinsImagesLayout(requireContext())
 
     override val viewModel by viewModel<BinsImagesViewModel> {
         parametersOf(args.data.data)

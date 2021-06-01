@@ -35,7 +35,7 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
     var categoryClicked: ((index: Int) -> Unit)? = null
     var itemReachedBottom: (() -> Unit)? = null
 
-    private val titleTextView: TextView
+    //private val titleTextView: TextView
     private val fallingItemLayout: FIB
     private val frameLayout: FrameLayout
     private val columnsLinear: LinearLayout
@@ -53,7 +53,7 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
 
     init {
         val view = context.inflateLayout(R.layout.layout_bins, this, true)
-        titleTextView = view.findViewById(R.id.title_text_view)
+    //    titleTextView = view.findViewById(R.id.title_text_view)//title_text_view
         frameLayout = view.findViewById(R.id.frame_layout)
         columnsLinear = view.findViewById(R.id.columns_linear)
         categoriesLinear = view.findViewById(R.id.categories_linear)
@@ -66,7 +66,7 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
                         100.asPx, 40.asPx
                 )
         )
-        titleTextView.text = title
+       // titleTextView.text = title
     }
 
     fun setData(

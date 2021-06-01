@@ -54,6 +54,7 @@ abstract class BinsFragment<BinData> : BaseMechanicFragment<BinsViewModel<BinDat
 
     override fun onViewModelCreated(viewModel: BinsViewModel<BinData>) {
         super.onViewModelCreated(viewModel)
+        return
         viewModel.viewStateLiveData.observe(viewLifecycleOwner) {
             with(it) {
                 binsLayout.setData(it.bins, it.currentFallingItem, it.selectedBinIndex)
