@@ -69,11 +69,8 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
        // titleTextView.text = title
     }
 
-    fun setData(
-            bins: List<BinCategoryEntity>,
-            fallingItemEntity: BinFallingItemEntity<BinData>?,
-            selectedBinIndex: Int
-    ) {
+    fun setData(bins: List<BinCategoryEntity>, fallingItemEntity: BinFallingItemEntity<BinData>?,
+                selectedBinIndex: Int) {
         invalidateViewState(
                 viewState.copy(
                         bins = bins,
@@ -146,14 +143,12 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
     }
 
     private fun addSpaces() {
-        val spaceLayoutParams =
-                LinearLayout.LayoutParams(0.asPx, MATCH_PARENT).apply {
+        val spaceLayoutParams = LinearLayout.LayoutParams(0.asPx, MATCH_PARENT).apply {
                     weight = 1f
                 }
         columnsLinear.addView(View(context), spaceLayoutParams)
 
-        val categorySpaceLayoutParams =
-                LinearLayout.LayoutParams(0.asPx, WRAP_CONTENT).apply {
+        val categorySpaceLayoutParams = LinearLayout.LayoutParams(0.asPx, WRAP_CONTENT).apply {
                     weight = 1f
                 }
         categoriesLinear.addView(View(context), categorySpaceLayoutParams.apply {
@@ -182,8 +177,7 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
     private fun animateX(index: Int) {
         animation?.cancel()
         val destination = binsColumns[index].left
-        animation =
-                ValueAnimator.ofFloat(fallingItemLayout.translationX, destination.toFloat()).apply {
+        animation = ValueAnimator.ofFloat(fallingItemLayout.translationX, destination.toFloat()).apply {
                     duration = 300L
                     addUpdateListener {
                         fallingItemLayout.translationX = it.animatedValue as Float
@@ -193,8 +187,8 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
     }
 
     private data class ViewState<BinData>(
-            val bins: List<BinCategoryEntity>,
-            val currentFallingItem: BinFallingItemEntity<BinData>? = null,
-            val selectedBinIndex: Int
+        val bins: List<BinCategoryEntity>,
+        val currentFallingItem: BinFallingItemEntity<BinData>? = null,
+        val selectedBinIndex: Int
     )
 }

@@ -28,7 +28,6 @@ class SentenceGapFragment:
     override fun createGapLayout() = SentenceGapLayout(requireContext())
 
     companion object {
-
         fun createInstance(args: SentenceGapFragmentArgs) =
                 SentenceGapFragment().apply {
                     arguments = args.toBundle()

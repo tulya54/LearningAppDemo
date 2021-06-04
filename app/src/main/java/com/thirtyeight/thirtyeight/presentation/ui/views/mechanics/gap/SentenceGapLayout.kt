@@ -47,6 +47,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
         var count = 0
         val id = 7000
         val ids = IntArray(gapData.data.size)
+        //GapQuestionEntity
         gapData.data.forEach {
             when (it) {
                 is SentenceGapItem.Gap -> {
@@ -62,6 +63,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
                     counter++
                     gaps.add(gap)
                     availableGaps.add(true)
+                    // My change, add ID
                     gap.id = id + count
                     ids[count] = id + count
                     val params = LinearLayout.LayoutParams(WRAP_CONTENT, gapDimensions.height)
@@ -144,14 +146,5 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
     //  My change
     override fun changeUIGapSelected(gap: CTextView) {
         gap.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_selected_text)
-    }
-
-    fun getViewBottomLine(): View {
-        val viewBottomLine = View(context)
-        val params = LinearLayout.LayoutParams(MATCH_PARENT, context.resources.getDimension(R.dimen._1sdp).toInt())
-     //   params.setMargins(0, context.resources.getDimension(R.dimen._1sdp).toInt(), 0, 0)
-        viewBottomLine.layoutParams = params
-        viewBottomLine.setBackgroundColor(ContextCompat.getColor(context, R.color.grey))
-        return viewBottomLine
     }
 }

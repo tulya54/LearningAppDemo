@@ -80,6 +80,7 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     }
 
     private fun addOptions(gapQuestionEntity: GapQuestionEntity<GapData, OptionData>) {
+        //GapQuestionEntity  this key
         gapQuestionEntity.options.forEach { option ->
             val optionView = createGapView()
             optionData[optionView] = option
@@ -123,7 +124,6 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
                     LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, gapDimensions.height)
                 )
             }
-
         }
     }
 

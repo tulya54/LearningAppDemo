@@ -1,6 +1,10 @@
 package com.thirtyeight.thirtyeight.presentation.screens.mechanics.bins.image
 
+import android.view.View
+import android.widget.TextView
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.thirtyeight.thirtyeight.R
 import com.thirtyeight.thirtyeight.presentation.screens.mechanics.bins.BinsFragment
 import com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.bins.BinsImagesLayout
 import com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.bins.BinsLayout
@@ -26,5 +30,27 @@ class BinsImagesFragment: BinsFragment<Int>() {
                 BinsImagesFragment().apply {
                     arguments = args.toBundle()
                 }
+    }
+
+
+    override fun initViews(view: View) {
+        super.initViews(view)
+       // onModalWindow()
+    }
+
+    fun onModalWindow() {
+        val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialog)
+        dialog.setContentView(R.layout.modal_window_start_game)
+        val tvName = dialog.findViewById<TextView>(R.id.tvName) as TextView
+        tvName.text = "Image Bin"
+        val tvDescription = dialog.findViewById<TextView>(R.id.tvDescription) as TextView
+        tvDescription.text = "Explanation of the task"
+        val btnStart = dialog.findViewById<TextView>(R.id.btnStart) as TextView
+        btnStart.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.show()
     }
 }
