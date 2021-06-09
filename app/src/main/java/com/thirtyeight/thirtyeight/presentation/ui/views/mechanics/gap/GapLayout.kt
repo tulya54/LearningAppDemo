@@ -58,6 +58,9 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
     open fun changeUIGapSelected(view: GapView) {
 
     }
+    data class idQuestion(var id: Long, var view: CTextView, var width: Long? = null)
+    protected val idQuestionsList = ArrayList<idQuestion>()
+    protected val idCount = 0
 
     init {
         val view = context.inflateLayout(R.layout.layout_gap, this, true)
@@ -86,6 +89,11 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
             optionData[optionView] = option
             setDataToGap(optionView, option.data)
             viewPool[option.id] = optionView
+            for (item in gapQuestionEntity.answers) {
+                if (option.id == item) {
+                    idQuestionsList.add(idQuestion(option.id, optionView as CTextView))
+                }
+            }
             optionView.setOnClickListener {
                 if (it.isVisible()) {
                     val firstGapIndex = availableGaps.indexOfFirst { it }
@@ -113,6 +121,16 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
                     optionView,
                     LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, gapDimensions.height)
             )
+            for (item in idQuestionsList) {
+                item.view.post {
+                    item.width = item.view.width.toLong()
+                }
+            }
+            optionView.post {
+                val width = optionView.width
+                Timber.tag("Tag").d("")
+            }
+            Timber.tag("Tag").d("")
             //  optionView2  items default for FlowLayout2
             if (option.data is SentenceGapOptionData) {
                 val optionView2 = createGapView()
@@ -125,6 +143,7 @@ abstract class GapLayout<GapView : View, GapData, OptionData> @JvmOverloads cons
                 )
             }
         }
+        Timber.tag("TAG").d("Size: ${idQuestionsList.size}")
     }
 
     protected fun chooseOptionForGap(gapIndex: Int, option: GapOptionEntity<OptionData>, gapView: GapView) {

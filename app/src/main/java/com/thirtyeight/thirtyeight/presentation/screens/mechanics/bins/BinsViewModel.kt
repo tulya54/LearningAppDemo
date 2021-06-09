@@ -12,11 +12,9 @@ import com.thirtyeight.thirtyeight.util.StringResourceMapper
 /**
  * Created by nikolozakhvlediani on 3/29/21.
  */
-abstract class BinsViewModel<BinData>(
-        val data: BinsDataEntity<BinData>,
-        coroutineContextProvider: CoroutineContextProvider,
-        stringResourceMapper: StringResourceMapper
-) : ViewStateViewModel<BinsViewState<BinData>, BinsUiAction, BinsWish<BinData>>(coroutineContextProvider, stringResourceMapper) {
+abstract class BinsViewModel<BinData>(val data: BinsDataEntity<BinData>,
+        coroutineContextProvider: CoroutineContextProvider, stringResourceMapper: StringResourceMapper):
+    ViewStateViewModel<BinsViewState<BinData>, BinsUiAction, BinsWish<BinData>>(coroutineContextProvider, stringResourceMapper) {
 
     private val _navigationLiveData = SingleLifeLiveData<NavigateTo>()
     val navigationLiveData: LiveData<NavigateTo> = _navigationLiveData
@@ -36,6 +34,28 @@ abstract class BinsViewModel<BinData>(
     override fun processUiAction(uiAction: BinsUiAction) {
         super.processUiAction(uiAction)
         when (uiAction) {
+            BinsUiAction.Position0 -> {
+                val newIndex = calculateNextIndex(
+                    0, viewState.bins.size
+                )
+                if (newIndex != viewState.selectedBinIndex)
+                    reduceAndPost(BinsWish.UpdateSelectedBin(newIndex))
+            }
+            BinsUiAction.Position1 -> {
+                val newIndex = calculateNextIndex(
+                    1, viewState.bins.size
+                )
+                if (newIndex != viewState.selectedBinIndex)
+                    reduceAndPost(BinsWish.UpdateSelectedBin(newIndex))
+            }
+            BinsUiAction.Position2 -> {
+                val newIndex = calculateNextIndex(
+                    2, viewState.bins.size
+                )
+                if (newIndex != viewState.selectedBinIndex)
+                    reduceAndPost(BinsWish.UpdateSelectedBin(newIndex))
+            }
+
             BinsUiAction.LeftArrowClicked -> {
                 val newIndex = calculateNextIndex(
                         viewState.selectedBinIndex - 1, viewState.bins.size
@@ -72,10 +92,16 @@ abstract class BinsViewModel<BinData>(
 
     override fun onCreate() {
         super.onCreate()
+        //reduceAndPost(BinsWish.DataLoaded(data))
+    }
+
+    //  My change
+    fun onStartFalling() {
         reduceAndPost(BinsWish.DataLoaded(data))
     }
 
     private inner class BinsReducer : Reducer<BinsViewState<BinData>, BinsWish<BinData>> {
+
         override fun invoke(viewState: BinsViewState<BinData>, wish: BinsWish<BinData>) =
                 when (wish) {
                     is BinsWish.DataLoaded -> {

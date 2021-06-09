@@ -19,6 +19,7 @@ import com.thirtyeight.thirtyeight.presentation.screens.mechanicsession.Mechanic
 import com.thirtyeight.thirtyeight.presentation.ui.CTextView
 import com.thirtyeight.thirtyeight.presentation.ui.base.BaseMechanicFragment
 import com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.gap.GapLayout
+import com.thirtyeight.thirtyeight.util.SpannableTools
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 
@@ -108,41 +109,21 @@ abstract class GapFragment<GapData, OptionData, VM : GapViewModel<GapData, Optio
         val resultList = result.resultList
         if (points == from) {
             gapLayout.goodResult()
-            val mechanicSessionActivity = activity as MechanicSessionActivity?
-            mechanicSessionActivity?.let { activity ->
-                //   "СORRECT 3/3"
-                val firstText = "СORRECT $points"
-                val secondText = "/$from"
-                val startIndex = 0
-                val endIndex = firstText.length
-                val spannableString = SpannableString(firstText + secondText)
-                spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(activity, R.color.green_dark)),
-                    startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                activity.onChangeTitleToolbar(spannableString)
-                btnGo?.let {
-                    it.background = ContextCompat.getDrawable(activity, R.drawable.background_btn_green_dark)
-                    it.text = "CONTINUE"
-                }
-            }
         } else {
             gapLayout.wrongResult(points, from, resultList!!)
-            val mechanicSessionActivity = activity as MechanicSessionActivity?
-            mechanicSessionActivity?.let { activity ->
-                //  WRONG 2/3
-                val firstText = "СORRECT $points"
-                val secondText = "/$from"
-                val startIndex = 0
-                val endIndex = firstText.length
-                val spannableString = SpannableString(firstText + secondText)
-                spannableString.setSpan(ForegroundColorSpan(ContextCompat.getColor(activity, R.color.red_dark)),
-                    startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                activity.onChangeTitleToolbar(spannableString)
-                btnGo?.let {
-                    it.background = ContextCompat.getDrawable(activity, R.drawable.background_btn_red_dark)
-                    it.text = "CONTINUE"
-                }
+        }
+        val mechanicSessionActivity = activity as MechanicSessionActivity?
+        mechanicSessionActivity?.let { activity ->
+            val spannable = SpannableTools.getSpannable(activity,
+                "СORRECT $points", "/$from",
+                if (points == from) R.color.green_dark else R.color.red_dark)
+            activity.onChangeTitleToolbar(spannable)
+            btnGo?.let {
+                it.background = ContextCompat.getDrawable(activity,
+                    if (points == from) R.drawable.background_btn_green_dark
+                    else R.drawable.background_btn_red_dark)
+                it.text = "CONTINUE"
             }
         }
-
     }
 }

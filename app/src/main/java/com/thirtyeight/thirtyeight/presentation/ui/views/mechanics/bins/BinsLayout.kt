@@ -9,24 +9,23 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.TextView
-import com.nikoloz14.myextensions.asPx
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import com.nikoloz14.myextensions.makeInvisible
 import com.nikoloz14.myextensions.makeVisible
 import com.thirtyeight.thirtyeight.R
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.bins.BinCategoryEntity
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.bins.BinFallingItemEntity
-import com.thirtyeight.thirtyeight.presentation.ext.getColorFromAttr
 import com.thirtyeight.thirtyeight.presentation.ext.inflateLayout
+import com.thirtyeight.thirtyeight.util.SpannableTools
 
 /**
  * Created by nikolozakhvlediani on 3/29/21.
  */
 abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0):
+    FrameLayout(context, attrs, defStyleAttr) {
 
     abstract fun createFallingItemLayout(): FIB
     abstract val fallingDuration: Long
@@ -35,11 +34,9 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
     var categoryClicked: ((index: Int) -> Unit)? = null
     var itemReachedBottom: (() -> Unit)? = null
 
-    //private val titleTextView: TextView
     private val fallingItemLayout: FIB
     private val frameLayout: FrameLayout
     private val columnsLinear: LinearLayout
-    private val categoriesLinear: LinearLayout
 
     private var frameWidth = 0
     private var frameHeight = 0
@@ -51,22 +48,49 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
     private var viewState = ViewState<BinData>(emptyList(), null, 0)
     private var previousViewState: ViewState<BinData> = viewState
 
+    //  My change
+    private var fallingContainers = mutableListOf<FrameLayout>()
+    private var tabIndex = 0
+    private var tabTotal = 0
+    private var speedFalling: Long = 0
+     var ivItem1: ImageView? = null
+     var ivItem2: ImageView? = null
+     var ivItem3: ImageView? = null
+    private var ivTabBottomItem1: ImageView? = null
+    private var ivTabBottomItem2: ImageView? = null
+    private var ivTabBottomItem3: ImageView? = null
+    private var clFrame1: ConstraintLayout? = null
+    private var clFrame2: ConstraintLayout? = null
+    private var btnReady: TextView? = null
+    private var tvBug1: TextView? = null
+    private var tvBug2: TextView? = null
+    private var tvBug3: TextView? = null
+
     init {
         val view = context.inflateLayout(R.layout.layout_bins, this, true)
-    //    titleTextView = view.findViewById(R.id.title_text_view)//title_text_view
         frameLayout = view.findViewById(R.id.frame_layout)
         columnsLinear = view.findViewById(R.id.columns_linear)
-        categoriesLinear = view.findViewById(R.id.categories_linear)
         fallingItemLayout = createFallingItemLayout().apply {
             makeInvisible()
         }
-        frameLayout.addView(
-                fallingItemLayout,
-                LayoutParams(
-                        100.asPx, 40.asPx
-                )
-        )
-       // titleTextView.text = title
+        //  TEMPORARY WIDGETS
+        ivItem1 = view.findViewById(R.id.ivItem1)
+        ivItem2 = view.findViewById(R.id.ivItem2)
+        ivItem3 = view.findViewById(R.id.ivItem3)
+        ivTabBottomItem1 = view.findViewById(R.id.ivTabBottomItem1)
+        ivTabBottomItem1?.visibility = View.VISIBLE
+        ivTabBottomItem2 = view.findViewById(R.id.ivTabBottomItem2)
+        ivTabBottomItem3 = view.findViewById(R.id.ivTabBottomItem3)
+        speedFalling = fallingDuration
+        clFrame1 = view.findViewById(R.id.clFrame1)
+        clFrame2 = view.findViewById(R.id.clFrame2)
+        btnReady = view.findViewById(R.id.btnReady)
+        btnReady?.setOnClickListener {
+            Toast.makeText(context, "Beta test", Toast.LENGTH_SHORT).show()
+        }
+        tvBug1 = view.findViewById(R.id.tvBug1)
+        tvBug2 = view.findViewById(R.id.tvBug2)
+        tvBug3 = view.findViewById(R.id.tvBug3)
     }
 
     fun setData(bins: List<BinCategoryEntity>, fallingItemEntity: BinFallingItemEntity<BinData>?,
@@ -90,7 +114,7 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
             viewState.currentFallingItem?.let {
                 with(fallingItemLayout) {
                     setData(it.data)
-                    translationX = binsColumns[viewState.selectedBinIndex].left.toFloat()
+           //         translationX = binsColumns[viewState.selectedBinIndex].left.toFloat()
                     translationY = 0f
                     makeVisible()
                 }
@@ -110,58 +134,48 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
     private fun setUp(bins: List<BinCategoryEntity>) {
         frameWidth = frameLayout.width - frameLayout.paddingStart - frameLayout.paddingEnd
         frameHeight = frameLayout.height
+        //  My change
+        columnsLinear.weightSum = bins.size.toFloat()
+        tabTotal = bins.size
         bins.forEachIndexed { index, bin ->
             addColumn()
-            addCategory(bin, index)
             if (index != bins.size - 1) {
                 addSpaces()
             }
         }
+        if (fallingContainers.size > 0) {
+            val params = LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
+                gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL
+            }
+            fallingContainers[0].addView(fallingItemLayout, params)
+        }
     }
+
 
     private fun addColumn() {
-        val layoutParams = LinearLayout.LayoutParams(100.asPx, MATCH_PARENT)
-        val view = View(context).apply {
-            setBackgroundColor(context.getColorFromAttr(R.attr.binColumnColor))
-        }
+        val layoutParams = LinearLayout.LayoutParams(0, MATCH_PARENT, 1.0f)
+        val view = FrameLayout(context)
+       // view.background = ContextCompat.getDrawable(context, R.drawable.background_btn_ready_disable)
         columnsLinear.addView(view, layoutParams)
         binsColumns.add(view)
-    }
-
-    private fun addCategory(binCategoryEntity: BinCategoryEntity, index: Int) {
-        val categoryLayoutParams = LinearLayout.LayoutParams(100.asPx, WRAP_CONTENT)
-        val binCategoryLayout = BinCategoryBoxLayout(context).apply {
-            setText(binCategoryEntity.text)
-            setOnClickListener {
-                categoryClicked?.invoke(index)
-            }
-        }
-        categoriesLinear.addView(binCategoryLayout, categoryLayoutParams.apply {
-            gravity = Gravity.BOTTOM
-        })
-        binsCategories.add(binCategoryLayout)
+        fallingContainers.add(view)
     }
 
     private fun addSpaces() {
-        val spaceLayoutParams = LinearLayout.LayoutParams(0.asPx, MATCH_PARENT).apply {
-                    weight = 1f
-                }
-        columnsLinear.addView(View(context), spaceLayoutParams)
-
-        val categorySpaceLayoutParams = LinearLayout.LayoutParams(0.asPx, WRAP_CONTENT).apply {
-                    weight = 1f
-                }
-        categoriesLinear.addView(View(context), categorySpaceLayoutParams.apply {
-            gravity = Gravity.BOTTOM
-        })
+        val width = context.resources.getDimension(R.dimen._3sdp).toInt()
+        val spaceLayoutParams = LinearLayout.LayoutParams(width, MATCH_PARENT)
+        columnsLinear.addView(View(context).apply {
+                     background = ContextCompat.getDrawable(context, R.drawable.vertical_line_gradient_drawable)
+        }, spaceLayoutParams)
     }
 
     private fun startFalling() {
         val destination = frameHeight.toFloat() - fallingItemLayout.height
         ValueAnimator.ofFloat(fallingItemLayout.translationY, destination).apply {
-            duration = fallingDuration
+            duration = speedFalling
             addUpdateListener {
                 fallingItemLayout.translationY = it.animatedValue as Float
+                duration = speedFalling
             }
             addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
@@ -180,7 +194,7 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
         animation = ValueAnimator.ofFloat(fallingItemLayout.translationX, destination.toFloat()).apply {
                     duration = 300L
                     addUpdateListener {
-                        fallingItemLayout.translationX = it.animatedValue as Float
+                   //     fallingItemLayout.translationX = it.animatedValue as Float
                     }
                     start()
                 }
@@ -191,4 +205,68 @@ abstract class BinsLayout<FIB : FallingItemBinLayout<*, BinData>, BinData> @JvmO
         val currentFallingItem: BinFallingItemEntity<BinData>? = null,
         val selectedBinIndex: Int
     )
+
+    fun moveFallingView(left: Boolean = false, right: Boolean = false): Boolean {
+        speedFalling = 4000L
+        if (fallingContainers.size > 0) {
+            if (left && tabIndex > 0) {
+                fallingContainers[tabIndex].removeView(fallingItemLayout)
+                fallingContainers[tabIndex-1].addView(fallingItemLayout)
+                tabIndex--
+            } else if (right && tabIndex < tabTotal-1) {
+                fallingContainers[tabIndex].removeView(fallingItemLayout)
+                fallingContainers[tabIndex+1].addView(fallingItemLayout)
+                tabIndex++
+            }
+        }
+        ivTabBottomItem1?.let {
+            it.visibility = if (tabIndex == 0) View.VISIBLE else View.GONE
+        }
+        ivTabBottomItem2?.let {
+            it.visibility = if (tabIndex == 1) View.VISIBLE else View.GONE
+        }
+        ivTabBottomItem3?.let {
+            it.visibility = if (tabIndex == 2) View.VISIBLE else View.GONE
+        }
+        if (left) return tabIndex == 0
+        if (right) return tabIndex == 2
+        return false
+    }
+
+    fun selectPosition(position: Int) {
+        if (tabIndex == position) {
+            return
+        }
+        speedFalling = 4000L
+        if (fallingContainers.size > 0) {
+            fallingContainers[tabIndex].removeView(fallingItemLayout)
+            fallingContainers[position].addView(fallingItemLayout)
+            tabIndex = position
+        }
+        ivTabBottomItem1?.let {
+            it.visibility = if (tabIndex == 0) View.VISIBLE else View.GONE
+        }
+        ivTabBottomItem2?.let {
+            it.visibility = if (tabIndex == 1) View.VISIBLE else View.GONE
+        }
+        ivTabBottomItem3?.let {
+            it.visibility = if (tabIndex == 2) View.VISIBLE else View.GONE
+        }
+    }
+
+    fun onResult(isGood: Boolean) {
+        clFrame1?.visibility = View.GONE
+        clFrame2?.visibility = View.VISIBLE
+        if (isGood) {
+            tvBug1?.text = SpannableTools.getSpannable(context, "26", "/26", R.color.green_dark)
+            tvBug2?.text = SpannableTools.getSpannable(context, "26", "/26", R.color.green_dark)
+            tvBug3?.text = SpannableTools.getSpannable(context, "26", "/26", R.color.green_dark)
+            btnReady?.background = ContextCompat.getDrawable(context, R.drawable.background_btn_green_dark)
+        } else {
+            tvBug1?.text = SpannableTools.getSpannable(context, "26", "/26", R.color.red_dark)
+            tvBug2?.text = SpannableTools.getSpannable(context, "26", "/26", R.color.red_dark)
+            tvBug3?.text = SpannableTools.getSpannable(context, "26", "/26", R.color.red_dark)
+            btnReady?.background = ContextCompat.getDrawable(context, R.drawable.background_btn_red_dark)
+        }
+    }
 }

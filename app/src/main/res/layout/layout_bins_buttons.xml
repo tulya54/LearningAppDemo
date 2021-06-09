@@ -17,7 +17,7 @@
         android:id="@+id/left_button"
         android:layout_marginLeft="@dimen/_5sdp"
         android:layout_marginRight="@dimen/_5sdp"
-        android:background="@drawable/background_btn_ready"
+        android:background="@drawable/background_btn_ready_disable"
         android:scaleType="center"
         android:layout_width="0dp"
         android:layout_height="@dimen/_35sdp"/>
@@ -45,12 +45,5 @@
         android:id="@+id/progressBar"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        />
-
-
-
-
-
-
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

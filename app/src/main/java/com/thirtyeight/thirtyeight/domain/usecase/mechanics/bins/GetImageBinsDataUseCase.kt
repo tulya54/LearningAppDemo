@@ -20,12 +20,12 @@ class GetImageBinsDataUseCase : BaseUseCase<Unit, BinsDataEntity<Int>>() {
                 R.string.sort_falling_objects_in_correct_categories,
                 listOf(butterflyCategory, bullCategory, frogCategory),
                 listOf(
-                        BinFallingItemEntity(GenerateId(), butterflyCategory.id, R.drawable.butterfly),
-                        BinFallingItemEntity(GenerateId(), butterflyCategory.id, R.drawable.butterfly),
-                        BinFallingItemEntity(GenerateId(), bullCategory.id, R.drawable.cow),
-                        BinFallingItemEntity(GenerateId(), bullCategory.id, R.drawable.cow),
-                        BinFallingItemEntity(GenerateId(), frogCategory.id, R.drawable.frog),
-                        BinFallingItemEntity(GenerateId(), frogCategory.id, R.drawable.frog)
+                        BinFallingItemEntity(GenerateId(), butterflyCategory.id, R.drawable.ic_bug_yellow),
+                        BinFallingItemEntity(GenerateId(), butterflyCategory.id, R.drawable.ic_bug_yellow),
+                        BinFallingItemEntity(GenerateId(), bullCategory.id, R.drawable.ic_bug_red),
+                        BinFallingItemEntity(GenerateId(), bullCategory.id, R.drawable.ic_bug_red),
+                        BinFallingItemEntity(GenerateId(), frogCategory.id, R.drawable.ic_bug_green),
+                        BinFallingItemEntity(GenerateId(), frogCategory.id, R.drawable.ic_bug_green)
                 ).shuffled()
         )
     }

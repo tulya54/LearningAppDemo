@@ -11,9 +11,8 @@ import com.thirtyeight.thirtyeight.util.StringResourceMapper
 typealias Reducer<VS, WISH> = (viewState: VS, wish: WISH) -> VS
 
 abstract class ViewStateViewModel<VS : ViewState, UI_ACTION, WISH>(
-        coroutineContextProvider: CoroutineContextProvider,
-        stringResourceMapper: StringResourceMapper
-) : BaseViewModel(coroutineContextProvider, stringResourceMapper) {
+        coroutineContextProvider: CoroutineContextProvider, stringResourceMapper: StringResourceMapper):
+    BaseViewModel(coroutineContextProvider, stringResourceMapper) {
 
     abstract fun getInitialViewState(): VS
     abstract val reducer: Reducer<VS, WISH>

@@ -34,4 +34,5 @@
     <color name="green_dark">#1A8917</color>
     <color name="red_light">#FFF6F6</color>
     <color name="red_dark">#E4100E</color>
+    <color name="red_ready_disable">#966382</color>
 </resources>

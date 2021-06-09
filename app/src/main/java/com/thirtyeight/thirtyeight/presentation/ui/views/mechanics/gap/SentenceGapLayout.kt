@@ -2,19 +2,14 @@ package com.thirtyeight.thirtyeight.presentation.ui.views.mechanics.gap
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.ContextThemeWrapper
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.doOnLayout
-import com.nex3z.flowlayout.FlowLayout
-import com.nikoloz14.myextensions.asDp
 import com.nikoloz14.myextensions.asPx
 import com.thirtyeight.thirtyeight.R
 import com.thirtyeight.thirtyeight.domain.entities.mechanics.gap.sentence.SentenceGapData
@@ -31,9 +26,15 @@ import timber.log.Timber
 class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0):
     GapLayout<CTextView, SentenceGapData, SentenceGapOptionData>(context, attrs, defStyleAttr) {
 
+    companion object {
+        private const val TAG = "SentenceGapLayout"
+    }
+
     override val gapDimensions: Dimensions by lazy { Dimensions(100.asPx, context.resources.getDimension(R.dimen._30sdp).toInt()) }
     private val gapButtonContextWrapper = ContextThemeWrapper(context, R.style.SentenceGapSelectText)
     private val sentenceTextContextWrapper = ContextThemeWrapper(context, R.style.MechanicTextViewStyle)
+
+    private val myCTextViews = ArrayList<CTextView>()
 
     override fun addGaps(gapData: SentenceGapData, clickListener: (gapView: CTextView, index: Int) -> Unit) {
         val frame = context.inflateLayout(R.layout.part_sentence_gaps) as ConstraintLayout
@@ -47,7 +48,6 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
         var count = 0
         val id = 7000
         val ids = IntArray(gapData.data.size)
-        //GapQuestionEntity
         gapData.data.forEach {
             when (it) {
                 is SentenceGapItem.Gap -> {
@@ -68,6 +68,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
                     ids[count] = id + count
                     val params = LinearLayout.LayoutParams(WRAP_CONTENT, gapDimensions.height)
                     frame.addView(gap, params)
+                    myCTextViews.add(gap)
                 }
                 is SentenceGapItem.Word -> {
                     val wordView = CTextView(
@@ -87,8 +88,7 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
             count++
         }
         flowLayout.referencedIds = ids
-        gapContainer.addView(
-            frame,
+        gapContainer.addView(frame,
                 LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
                     gravity = Gravity.TOP
                 }
@@ -101,19 +101,10 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
             v2.visibility = if (result > 1) View.VISIBLE else View.GONE
             v3.visibility = if (result > 2) View.VISIBLE else View.GONE
             v4.visibility = if (result > 3) View.VISIBLE else View.GONE
-            Timber.tag("TAG").d("Flow row count: $result")
+            Timber.tag(TAG).d("Flow row count: $result")
+            setMinimumWidthForIntuitivelyAnswerWidget()
         }
-        Timber.tag("TAG").d("")
-    }
-
-    private fun getDimensionDP(numb: Int) : Int {
-        val px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, numb.toFloat(), getResources().getDisplayMetrics());
-        return Math.round(px)
-    }
-
-    private fun getDimensionPX(numb: Int) : Int {
-        val px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, numb.toFloat(), getResources().getDisplayMetrics());
-        return Math.round(px)
+        Timber.tag(TAG).d("")
     }
 
     override fun createGapView(): CTextView {
@@ -146,5 +137,13 @@ class SentenceGapLayout constructor(context: Context, attrs: AttributeSet? = nul
     //  My change
     override fun changeUIGapSelected(gap: CTextView) {
         gap.background = ContextCompat.getDrawable(context, R.drawable.background_sentence_gap_selected_text)
+    }
+
+    private fun setMinimumWidthForIntuitivelyAnswerWidget() {
+        var position = idQuestionsList.size -1
+        for (item in myCTextViews) {
+            item.minWidth = idQuestionsList[position].width?.toInt()!!
+            position--
+        }
     }
 }

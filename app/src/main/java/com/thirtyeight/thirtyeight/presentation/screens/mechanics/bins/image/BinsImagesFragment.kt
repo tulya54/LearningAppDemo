@@ -25,17 +25,15 @@ class BinsImagesFragment: BinsFragment<Int>() {
     }
 
     companion object {
-
         fun createInstance(args: BinsImagesFragmentArgs) =
                 BinsImagesFragment().apply {
                     arguments = args.toBundle()
                 }
     }
 
-
     override fun initViews(view: View) {
         super.initViews(view)
-       // onModalWindow()
+        onModalWindow()
     }
 
     fun onModalWindow() {
@@ -47,6 +45,7 @@ class BinsImagesFragment: BinsFragment<Int>() {
         tvDescription.text = "Explanation of the task"
         val btnStart = dialog.findViewById<TextView>(R.id.btnStart) as TextView
         btnStart.setOnClickListener {
+            onStartTimer()
             dialog.dismiss()
         }
         dialog.setCancelable(false)

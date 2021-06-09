@@ -67,14 +67,11 @@ class MechanicSessionViewModel(
         }
     }
 
-    private inner class MechanicSessionReducer :
-            Reducer<MechanicSessionViewState, MechanicSessionWish> {
-
-        override fun invoke(
-                viewState: MechanicSessionViewState,
-                wish: MechanicSessionWish
-        ): MechanicSessionViewState {
+    private inner class MechanicSessionReducer: Reducer<MechanicSessionViewState, MechanicSessionWish> {
+        override fun invoke(viewState: MechanicSessionViewState, wish: MechanicSessionWish):
+                MechanicSessionViewState {
             return when (wish) {
+
                 is MechanicSessionWish.DataLoaded -> {
                     viewState.copy(
                             mechanicSessionData = wish.mechanics

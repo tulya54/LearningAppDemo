@@ -6,8 +6,7 @@ import com.thirtyeight.thirtyeight.domain.usecase.base.BaseUseCase
 /**
  * Created by nikolozakhvlediani on 3/27/21.
  */
-class CheckGapAnswersUseCase :
-        BaseUseCase<CheckGapAnswersUseCase.GapAnswers, CheckGapAnswersUseCase.GapResult>() {
+class CheckGapAnswersUseCase: BaseUseCase<CheckGapAnswersUseCase.GapAnswers, CheckGapAnswersUseCase.GapResult>() {
 
     override fun execute(input: GapAnswers): GapResult {
         val resultList = ArrayList<Boolean>()

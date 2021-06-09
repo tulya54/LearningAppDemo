@@ -12,8 +12,8 @@ import com.thirtyeight.thirtyeight.presentation.ext.inflateLayout
  * Created by nikolozakhvlediani on 3/29/21.
  */
 abstract class FallingItemBinLayout<BinView : View, BinData> @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0):
+    FrameLayout(context, attrs, defStyleAttr) {
 
     abstract fun createView(): BinView
     abstract fun setDataToView(binView: BinView, data: BinData)
